@@ -85,6 +85,7 @@ export default function Home() {
             <Link
               href="/signup"
               className="ml-1 font-bold text-[#3399ef] text-sm"
+              legacyBehavior
             >
               <a>Sign up</a>
             </Link>

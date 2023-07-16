@@ -16,9 +16,8 @@ export const NavbarComponent = ({ openSidebar, openSidebarStatus }: any) => {
             Material Tailwind
           </Typography>
           <Switch
-            defaultChecked
             checked={openSidebarStatus}
-            onClick={() => openSidebar(!openSidebarStatus)}
+            onChange={() => openSidebar(!openSidebarStatus)}
           />
         </div>
         <ProfileMenu />
