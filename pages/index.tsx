@@ -9,6 +9,7 @@ import {
   Typography,
   Input,
   Checkbox,
+  Alert,
 } from "@material-tailwind/react";
 import { useRouter } from "next/router";
 import { FcGoogle } from "react-icons/fc";
@@ -20,34 +21,36 @@ import Link from "next/link";
 import notify from "@/utils/toast";
 import ApiService from "@/services/ApiService";
 import { setCookie } from "cookies-next";
+import { InformationCircleIcon } from "@heroicons/react/24/outline";
 
 const frontEndUrl = process.env.FRONTEND_URL || "http://localhost:3000";
 
 export default function Home() {
-  const email = useRef<any>(null)
-  const pwd = useRef<any>(null)
+  const email = useRef<any>(null);
+  const pwd = useRef<any>(null);
   const router = useRouter();
+  const [ErrAlert, setErrAlert] = useState(false);
 
   const gotoDashboard = async () => {
     const UserEmail = email.current.value;
     const Password = pwd.current.value;
-    if(!UserEmail || !Password){
-      notify.warning("Please check your email or password!")
+    if (!UserEmail || !Password) {
+      setErrAlert(true)
     }
-    const res:any = await signIn("credentials", {
+    const res: any = await signIn("credentials", {
       username: UserEmail,
       password: Password,
       redirect: false,
-    })
-    if(res.error === null){
-      const user = await ApiService.getData({url: `/users/${UserEmail}`})
+    });
+    if (res.error === null) {
+      const user = await ApiService.getData({ url: `/users/${UserEmail}` });
       setCookie("NewUserId", user.id, {
         maxAge: 60 * 60 * 24 * 7,
         path: "/",
-      })
-      notify.success("Successful! Redirecting..."); 
+      });
+      notify.success("Successful! Redirecting...");
       router.push(frontEndUrl + "/dashboard");
-    } else notify.error(res.error);
+    } else setErrAlert(true);
   };
 
   const signInWithGoogle = async () => {
@@ -72,6 +75,17 @@ export default function Home() {
           </Typography>
         </CardHeader>
         <CardBody className="flex flex-col gap-4">
+          {ErrAlert && (
+            <Alert
+              color="red"
+              icon={
+                <InformationCircleIcon strokeWidth={2} className="h-4 w-4" />
+              }
+              className="text-xs"
+            >
+              Please check your email or password!
+            </Alert>
+          )}
           <Button
             size="lg"
             variant="outlined"
@@ -91,8 +105,8 @@ export default function Home() {
             <BsFacebook className="w-6 h-6" />
             <Typography>Continue with facebook</Typography>
           </Button>
-          <Input label="Email" size="lg" inputRef={email} />
-          <Input type="password" label="Password" size="lg" inputRef={pwd} />
+          <Input label="Email" size="lg" inputRef={email} onChange={() => setErrAlert(false)} />
+          <Input type="password" label="Password" size="lg" inputRef={pwd} onChange={() => setErrAlert(false)} />
           <div className="-ml-2.5">
             <Checkbox label="Remember Me" />
           </div>
@@ -103,10 +117,7 @@ export default function Home() {
           </Button>
           <Typography variant="small" className="mt-6 flex justify-center">
             Don&apos;t have an account?
-            <Link
-              href="/signup"
-              legacyBehavior
-            >
+            <Link href="/signup" legacyBehavior>
               <a className="ml-1 font-bold text-[#3399ef] text-sm">Sign up</a>
             </Link>
           </Typography>
