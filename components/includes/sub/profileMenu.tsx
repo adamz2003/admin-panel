@@ -52,7 +52,7 @@ const ProfileMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
   const gotoPage = (url: string) => {
-    // signOut();
+    signOut();
     router.push(url);
   };
 
