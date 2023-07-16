@@ -90,7 +90,12 @@ export default function LeftSidebar({ show, onShow }: any) {
                 ) : (
                   <ListItem key={idx} onClick={() => gotoPage(ele.url)}>
                     <ListItemPrefix>{ele.img}</ListItemPrefix>
-                    {ele.title}
+                    <Typography
+                      color="blue-gray"
+                      className="mr-auto font-normal"
+                    >
+                      {ele.title}
+                    </Typography>
                   </ListItem>
                 )}
               </ListItem>

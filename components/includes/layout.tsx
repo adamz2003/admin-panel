@@ -13,9 +13,8 @@ import Head from "next/head";
 import { getSession, useSession } from "next-auth/react";
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
-import { stat } from "fs";
 
-export async function getInitialProps(context: GetServerSidePropsContext) {
+export async function get(context: GetServerSidePropsContext) {
   const session = await getSession(context);
 
   if (!session) {
@@ -46,7 +45,6 @@ export const LayoutComponent = ({ children }: any) => {
   const router = useRouter()
   const { data: session, status } = useSession();
 
-  console.log(session)
   const [openNav, setOpenNav] = useState(true);
 
   useEffect(() => {
@@ -62,48 +60,46 @@ export const LayoutComponent = ({ children }: any) => {
 
   if(status === "unauthenticated"){
     router.push("/")
-  }
-
-  if(status === "authenticated") {
-    return (
-      <div>
-        <Head>
-          <title>BuBe Admin Panel</title>
-        </Head>
-        <ToastContainer />
-        <NavbarComponent openSidebar={setOpenNav} openSidebarStatus={openNav} />
-        <div className="flex flex-row">
-          <LeftSidebar show={openNav} onShow={setOpenNav} />
-          <Card className="min-h-screen my-10 px-1 lg:mx-5 w-full">
-            <CardHeader variant="gradient" color="blue" className="w-fit rounded-full">
-              <Breadcrumbs
-                className="rounded-full p-1 bg-gradient-to-tr  border-white"
+  } 
+  
+  return (
+    <div>
+      <Head>
+        <title>BuBe Admin Panel</title>
+      </Head>
+      <ToastContainer />
+      <NavbarComponent openSidebar={setOpenNav} openSidebarStatus={openNav} />
+      <div className="flex flex-row">
+        <LeftSidebar show={openNav} onShow={setOpenNav} />
+        <Card className="min-h-screen my-10 px-1 lg:mx-5 w-full">
+          <CardHeader variant="gradient" color="blue" className="w-fit rounded-full">
+            <Breadcrumbs
+              className="rounded-full p-1 bg-gradient-to-tr  border-white"
+            >
+              <a
+                href="#"
+                className="text-white font-medium bg-blue px-3 py-1 rounded-full"
               >
-                <a
-                  href="#"
-                  className="text-white font-medium bg-blue px-3 py-1 rounded-full"
-                >
-                  Docs
-                </a>
-                <a
-                  href="#"
-                  className="text-white font-medium bg-blue px-3 py-1 rounded-full"
-                >
-                  Components
-                </a>
-                <a
-                  href="#"
-                  className="text-white font-medium bg-blue px-3 py-1 rounded-full"
-                >
-                  Breadcrumbs
-                </a>
-              </Breadcrumbs>
-            </CardHeader>
-            <CardBody className=" py-16">{children}</CardBody>
-          </Card>
-          {/* <div className="min-h-screen my-10 px-1 lg:mx-5 w-full">{children}</div> */}
-        </div>
+                Docs
+              </a>
+              <a
+                href="#"
+                className="text-white font-medium bg-blue px-3 py-1 rounded-full"
+              >
+                Components
+              </a>
+              <a
+                href="#"
+                className="text-white font-medium bg-blue px-3 py-1 rounded-full"
+              >
+                Breadcrumbs
+              </a>
+            </Breadcrumbs>
+          </CardHeader>
+          <CardBody className=" py-16">{children}</CardBody>
+        </Card>
+        {/* <div className="min-h-screen my-10 px-1 lg:mx-5 w-full">{children}</div> */}
       </div>
-    );
-  }
+    </div>
+  );
 };
