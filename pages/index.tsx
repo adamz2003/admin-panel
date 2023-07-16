@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Dialog,
@@ -17,14 +17,39 @@ import Head from "next/head";
 
 import { signIn } from "next-auth/react";
 import Link from "next/link";
+import notify from "@/utils/toast";
+import ApiService from "@/services/ApiService";
+import { setCookie } from "cookies-next";
 
-const frontEndUrl = "http://localhost:3000";
+const frontEndUrl = process.env.FRONTEND_URL || "http://localhost:3000";
 
 export default function Home() {
   const router = useRouter();
+  const [UserEmail, setUserEmail] = useState<string>("");
+  const [Password, setPassword] = useState<string>("");
 
-  const gotoDashboard = () => {
-    router.push("/dashboard");
+  const gotoDashboard = async () => {
+    console.log(UserEmail)
+    console.log(Password)
+    if(!UserEmail || !Password){
+      notify.warning("Please check your email or password!")
+    }
+    const res:any = await signIn("credentials", {
+      username: UserEmail,
+      password: Password,
+      redirect: false,
+    })
+    if(res.error === null){
+      const user = await ApiService.getData({url: `/users/${UserEmail}`})
+      setCookie("NewUserId", user.id, {
+        maxAge: 60 * 60 * 24 * 7,
+        path: "/",
+      })
+      notify.success("Successful! Redirecting..."); 
+      router.push(frontEndUrl + "/dashboard");
+    } else notify.error(res.error);
+    setUserEmail("")
+    setPassword("")
   };
 
   const signInWithGoogle = async () => {
@@ -68,8 +93,8 @@ export default function Home() {
             <BsFacebook className="w-6 h-6" />
             <Typography>Continue with facebook</Typography>
           </Button>
-          <Input label="Email" size="lg" />
-          <Input label="Password" size="lg" />
+          <Input label="Email" size="lg" onChange={(e:any) => setUserEmail(e.target.value)} />
+          <Input type="password" label="Password" size="lg" onChange={(e:any) => setPassword(e.target.value)} />
           <div className="-ml-2.5">
             <Checkbox label="Remember Me" />
           </div>
@@ -82,10 +107,9 @@ export default function Home() {
             Don&apos;t have an account?
             <Link
               href="/signup"
-              className="ml-1 font-bold text-[#3399ef] text-sm"
               legacyBehavior
             >
-              <a>Sign up</a>
+              <a className="ml-1 font-bold text-[#3399ef] text-sm">Sign up</a>
             </Link>
           </Typography>
         </CardFooter>
