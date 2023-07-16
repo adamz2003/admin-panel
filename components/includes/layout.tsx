@@ -15,7 +15,7 @@ import { getSession, useSession } from "next-auth/react";
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
+export async function getInitialProps (context: GetServerSidePropsContext) {
   const session = await getSession(context);
 
   if (!session) {
