@@ -42,6 +42,7 @@ export default function Home() {
       password: Password,
       redirect: false,
     });
+    console.log(res)
     if (res.error === null) {
       const user = await ApiService.getData({ url: `/users/${UserEmail}` });
       setCookie("NewUserId", user.id, {
