@@ -16,128 +16,82 @@ import {
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 import { userList } from "@/utils/fakeDatas";
-
-const columns = [
-  {
-    name: "No",
-    selector: (row: any) => row.id,
-    sortable: true,
-  },
-  {
-    name: "Name",
-    selector: (row: any) => row.firstName + row.lastName,
-    sortable: true,
-  },
-  {
-    name: "Email",
-    selector: (row: any) => row.email,
-    sortable: true,
-  },
-  {
-    name: "App Version",
-    selector: (row: any) => row.appVersion,
-    sortable: true,
-  },
-  {
-    name: "isActive",
-    selector: (row: any) => {
-      if(row.isActive === "f"){
-        return "offline"
-      } else {
-        return "online"
-      }
-    },
-    sortable: true,
-  },
-  {
-    name: "Created At",
-    selector: (row: any) => row.createdAt,
-    sortable: true,
-  },
-];
-
-const ExpandedComponent = ({ data }: any) => (
-  <pre>{JSON.stringify(data, null, 2)}</pre>
-);
+import CustomizedTable from "@/components/includes/dataTable/DataTable";
+import ConfirmModal from "@/components/includes/ConfirmModal";
+import { UserColumns } from "@/utils/columns";
+import ApiService from "@/services/ApiService";
 
 export default function UserTable() {
   const router = useRouter();
-  const gotoPage = (url: string) => {
-    router.push(url);
-  };
+  const handleSelected = ({ row }: any) => {};
+  const ProgressComponent = <Spinner />;
+  const [UserData, setUserData] = useState<any>([]);
+  const [Pending, setPending] = useState(false);
+
+  const ExpandedComponent = ({ data }: any) => (
+    <pre>{JSON.stringify(data, null, 2)}</pre>
+  );
+
+  const [selectedRows, setSelectedRows] = useState<any>([]);
 
   const handleChange = ({ selectedRows }: any) => {
-    console.log("Selected Rows: ", selectedRows);
+    setSelectedRows(selectedRows);
   };
 
-  const [pending, setPending] = useState(true);
-	const [rows, setRows] = useState<any>([]);
+  const handlerDelete = () => {
+    selectedRows.length === 0 && alert("Select records");
+    selectedRows.length > 0 && setOpen(true);
+  };
 
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setRows(userList);
-			setPending(false);
-		}, 2000);
-		return () => clearTimeout(timeout);
-	}, []);
+  const handlerEdit = () => {
+    selectedRows.length === 1 &&
+      router.push({
+        pathname: "/dashboard/mng-user/edit",
+        query: {
+          id: selectedRows[0].id,
+        },
+      });
+    selectedRows.length !== 1 && alert("Select one record!");
+  };
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(!open);
+
+  const deleteRecordAction = () => {
+    setOpen(false)
+    // TODO DELETE ACTION
+  }
+
+  const getUserData = async () => {
+    setPending(true)
+    const res = await ApiService.getData({url:"user-profile/fetch"})
+    setUserData(res.data)
+    setPending(false)
+  }
+
+  useEffect(() => {
+    getUserData()
+  }, []);
 
   return (
-    <>
-      <Card className="h-full w-full p-5">
-        <CardHeader floated={false} shadow={false} className="rounded-none">
-          <div className="mb-8 flex items-center justify-between gap-8">
-            <div>
-              <Typography variant="h5" color="blue-gray">
-                Manage Users
-              </Typography>
-              <Typography color="gray" className="mt-1 font-normal">
-                See information about all members
-              </Typography>
-            </div>
-            <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-              <Button variant="outlined" color="blue-gray" size="sm">
-                view all
-              </Button>
-              <Button
-                className="flex items-center gap-3"
-                color="blue"
-                size="sm"
-                onClick={() => gotoPage("/dashboard/mng-user/add")}
-                variant="gradient"
-              >
-                <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add member
-              </Button>
-            </div>
-          </div>
-        </CardHeader>
-        <CardBody className="">
-          <DataTable
-            title="Contact List"
-            columns={columns}
-            data={userList}
-            selectableRows
-            onSelectedRowsChange={handleChange}
-            expandableRows
-            expandableRowsComponent={ExpandedComponent}
-            pagination
-            progressPending={pending}
-            progressComponent={<Spinner className="h-12 w-12" />}
-          />
-        </CardBody>
-        <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
-          <Typography variant="small" color="blue-gray" className="font-normal">
-            Page 1 of 10
-          </Typography>
-          <div className="flex gap-2">
-            <Button variant="outlined" color="blue-gray" size="sm">
-              Previous
-            </Button>
-            <Button variant="outlined" color="blue-gray" size="sm">
-              Next
-            </Button>
-          </div>
-        </CardFooter>
-      </Card>
-    </>
+    <div>
+      <div>
+        <Button onClick={handlerEdit}>Edit</Button>
+        <Button color="red" onClick={handlerDelete}>
+          Delete
+        </Button>
+      </div>
+      <CustomizedTable
+        data={UserData}
+        columns={UserColumns}
+        handleSelected={handleSelected}
+        expandableRows
+        progressPending={Pending}
+        expandableRowsComponent={ExpandedComponent}
+        ProgressComponent={ProgressComponent}
+        onSelectedRowsChange={handleChange}
+      />
+      <ConfirmModal open={open} handleOpen={handleOpen} onConfirm={deleteRecordAction} />
+    </div>
   );
 }

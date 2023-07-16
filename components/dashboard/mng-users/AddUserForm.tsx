@@ -26,8 +26,8 @@ export const AddUserForm = () => {
           <Input variant="static" label="Last Name"></Input>
         </div>
         <div className="grid md:grid-cols-2 gap-4">
-          <Input variant="static" label="Email"></Input>
-          <Input variant="static" label="Profession"></Input>
+          <Input type="text" variant="static" label="Profession"></Input>
+          <Input type="email" variant="static" label="Email"></Input>
         </div>
         <div className="grid md:grid-cols-2 gap-4">
           <Input variant="static" type="password" label="Password"></Input>
