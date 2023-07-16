@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Button,
   Dialog,
@@ -24,13 +24,13 @@ import { setCookie } from "cookies-next";
 const frontEndUrl = process.env.FRONTEND_URL || "http://localhost:3000";
 
 export default function Home() {
+  const email = useRef<any>(null)
+  const pwd = useRef<any>(null)
   const router = useRouter();
-  const [UserEmail, setUserEmail] = useState<string>("");
-  const [Password, setPassword] = useState<string>("");
 
   const gotoDashboard = async () => {
-    console.log(UserEmail)
-    console.log(Password)
+    const UserEmail = email.current.value;
+    const Password = pwd.current.value;
     if(!UserEmail || !Password){
       notify.warning("Please check your email or password!")
     }
@@ -48,8 +48,6 @@ export default function Home() {
       notify.success("Successful! Redirecting..."); 
       router.push(frontEndUrl + "/dashboard");
     } else notify.error(res.error);
-    setUserEmail("")
-    setPassword("")
   };
 
   const signInWithGoogle = async () => {
@@ -93,8 +91,8 @@ export default function Home() {
             <BsFacebook className="w-6 h-6" />
             <Typography>Continue with facebook</Typography>
           </Button>
-          <Input label="Email" size="lg" onChange={(e:any) => setUserEmail(e.target.value)} />
-          <Input type="password" label="Password" size="lg" onChange={(e:any) => setPassword(e.target.value)} />
+          <Input label="Email" size="lg" inputRef={email} />
+          <Input type="password" label="Password" size="lg" inputRef={pwd} />
           <div className="-ml-2.5">
             <Checkbox label="Remember Me" />
           </div>
