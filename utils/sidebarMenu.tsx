@@ -9,6 +9,7 @@ import {
   FaGift,
   FaTasks,
   FaRocketchat,
+  FaThumbsUp
 } from "react-icons/fa";
 
 export const sidebarMenuList = [
@@ -74,6 +75,17 @@ export const sidebarMenuList = [
       {
         title: "Post Gig",
         url: "/dashboard/mng-gigs/post",
+      },
+    ],
+  },
+  {
+    img: <FaThumbsUp className="h-5 w-5" />,
+    title: "Manage Dispute",
+    url: "",
+    subMenu: [
+      {
+        title: "Request List",
+        url: "/dashboard/mng-dispute",
       },
     ],
   },

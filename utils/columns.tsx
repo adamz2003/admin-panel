@@ -4,30 +4,46 @@ import { BsTrash3, BsPencilSquare } from "react-icons/bs";
 export const UserColumns = [
   {
     name: "Name",
-    selector: (row: any) => row.firstName + row.lastName,
+    selector: (row: any) => row.user.firstName + row.user.lastName,
     sortable: true,
   },
   {
     name: "Email",
-    selector: (row: any) => row.email,
+    selector: (row: any) => row.user.email,
     sortable: true,
   },
   {
-    name: "App Version",
-    selector: (row: any) => row.appVersion,
+    name: "Location",
+    selector: (row: any) => row.city + "," + row.country,
     sortable: true,
   },
   {
-    name: "isActive",
+    name: "Role",
     selector: (row: any) => {
-      if (row.isActive === "f") {
-        return "offline";
-      } else {
-        return "online";
-      }
+      var result = ""
+      JSON.parse(row.user.roles).map((ele:any) =>{
+        result += ele + ","
+      })
+      return result.slice(0,-1)
     },
     sortable: true,
   },
+  // {
+  //   name: "App Version",
+  //   selector: (row: any) => row.appVersion,
+  //   sortable: true,
+  // },
+  // {
+  //   name: "isActive",
+  //   selector: (row: any) => {
+  //     if (row.isActive === "f") {
+  //       return "offline";
+  //     } else {
+  //       return "online";
+  //     }
+  //   },
+  //   sortable: true,
+  // },
   {
     name: "Created At",
     selector: (row: any) => row.createdAt,

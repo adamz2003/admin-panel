@@ -2,7 +2,7 @@ import ConfirmModal from "@/components/includes/ConfirmModal";
 import CustomizedTable from "@/components/includes/dataTable/DataTable";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
-import { JobsColumns } from "@/utils/columns";
+import { JobsColumns } from "../../../utils/columns";
 import { fakeJobs } from "@/utils/fakeDatas";
 import { Button, Spinner } from "@material-tailwind/react";
 import { useRouter } from "next/router";

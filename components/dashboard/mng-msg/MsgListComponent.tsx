@@ -1,33 +1,16 @@
-import {
-  MagnifyingGlassIcon,
-  ChevronUpDownIcon,
-} from "@heroicons/react/24/outline";
-import { PencilIcon, UserPlusIcon } from "@heroicons/react/24/solid";
-import DataTable from "react-data-table-component";
-import {
-  Card,
-  CardHeader,
-  Typography,
-  Button,
-  CardBody,
-  CardFooter,
-  Spinner,
-} from "@material-tailwind/react";
-import { useRouter } from "next/router";
-import { useEffect, useMemo, useState } from "react";
-import { userList } from "@/utils/fakeDatas";
-import CustomizedTable from "@/components/includes/dataTable/DataTable";
 import ConfirmModal from "@/components/includes/ConfirmModal";
-import { UserColumns } from "@/utils/columns";
+import CustomizedTable from "@/components/includes/dataTable/DataTable";
 import ApiService from "@/services/ApiService";
+import { MsgColumns } from "@/utils/columns";
+import { fakeMessageList } from "@/utils/fakeDatas";
+import { Button, Spinner } from "@material-tailwind/react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-export default function UserTable() {
+export const MngListComponent = () => {
   const router = useRouter();
   const handleSelected = ({ row }: any) => {};
   const ProgressComponent = <Spinner />;
-  const [UserData, setUserData] = useState<any>([]);
-  const [Pending, setPending] = useState(false);
-
   const ExpandedComponent = ({ data }: any) => (
     <pre>{JSON.stringify(data, null, 2)}</pre>
   );
@@ -58,19 +41,22 @@ export default function UserTable() {
   const handleOpen = () => setOpen(!open);
 
   const deleteRecordAction = () => {
-    setOpen(false)
+    setOpen(false);
     // TODO DELETE ACTION
-  }
+  };
 
-  const getUserData = async () => {
+  const [Pending, setPending] = useState(true);
+  const [MsgData, setMsgData] = useState<any>([]);
+
+  const getMsgData = async () => {
     setPending(true)
-    const res = await ApiService.getData({url:"user-profile/fetch"})
-    setUserData(res.data)
+    const res = await ApiService.getData({url:"/messages/findAll"})
+    setMsgData(res)
     setPending(false)
   }
 
   useEffect(() => {
-    getUserData()
+    getMsgData()
   }, []);
 
   return (
@@ -82,8 +68,8 @@ export default function UserTable() {
         </Button>
       </div>
       <CustomizedTable
-        data={UserData}
-        columns={UserColumns}
+        data={MsgData}
+        columns={MsgColumns}
         handleSelected={handleSelected}
         expandableRows
         progressPending={Pending}
@@ -91,7 +77,11 @@ export default function UserTable() {
         ProgressComponent={ProgressComponent}
         onSelectedRowsChange={handleChange}
       />
-      <ConfirmModal open={open} handleOpen={handleOpen} onConfirm={deleteRecordAction} />
+      <ConfirmModal
+        open={open}
+        handleOpen={handleOpen}
+        onConfirm={deleteRecordAction}
+      />
     </div>
   );
-}
+};
