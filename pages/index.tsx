@@ -1,5 +1,3 @@
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
 import React from "react";
 import {
   Button,
@@ -35,7 +33,7 @@ export default function Home() {
 
   return (
     <main
-      className={`min-h-screen bg-gray-200 ${inter.className} flex justify-center items-center`}
+      className={`min-h-screen bg-gray-200 flex justify-center items-center`}
     >
       <Head>
         <title>BuBe Admin Panel</title>

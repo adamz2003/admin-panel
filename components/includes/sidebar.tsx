@@ -10,8 +10,9 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
-import { sidebarMenuList } from "@/utils/sidebarMenu";
+import { sidebarMenuList } from "../../utils/sidebarMenu";
 import { useRouter } from "next/router";
+import { signOut } from "next-auth/react";
 
 export default function LeftSidebar({ show, onShow }: any) {
   const router = useRouter();
@@ -30,8 +31,12 @@ export default function LeftSidebar({ show, onShow }: any) {
     });
   }, []);
 
-  const gotoPage = (url: string) => {
-    router.push(url);
+  const gotoPage = async (url: string) => {
+    if(url === '/'){
+      await signOut({ callbackUrl: "/" })
+    } else {
+      router.push(url);
+    }
   };
 
   return (
