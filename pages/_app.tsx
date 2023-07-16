@@ -15,14 +15,17 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function MyApp(
-  { Component, pageProps }: AppPropsWithLayout,
+  {
+    Component,
+    pageProps: { session, ...pageProps },
+  }:any
 ) {
   const getLayout = Component.getLayout ?? ((page: ReactElement) => page);
   return (
     <main className="min-h-screen bg-gray-200">
       <ThemeProvider>
         <SessionProvider>
-          <SearchWordProvider>
+          <SearchWordProvider session={session}>
             {getLayout(<Component {...pageProps} />)}
           </SearchWordProvider>
         </SessionProvider>
