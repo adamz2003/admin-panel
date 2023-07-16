@@ -7,7 +7,7 @@ const CustomizedTable = (props: any /* DataTableProps */) => {
       selectableRows
       pagination
       fixedHeader
-      fixedHeaderScrollHeight="600px"
+      // fixedHeaderScrollHeight="600px"
       persistTableHead
       {...props}
     />

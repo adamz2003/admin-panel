@@ -1,17 +1,12 @@
 import ConfirmModal from "@/components/includes/ConfirmModal";
 import CustomizedTable from "@/components/includes/dataTable/DataTable";
-import { LayoutComponent } from "@/components/includes/layout";
-import { NextPageWithLayout } from "@/pages/_app";
 import { JobsColumns } from "../../../utils/columns";
-import { fakeJobs } from "@/utils/fakeDatas";
 import { Button, Spinner } from "@material-tailwind/react";
 import { useRouter } from "next/router";
-import { ReactElement, useState } from "react";
+import { useEffect, useState } from "react";
+import ApiService from "@/services/ApiService";
 
-const JobsList: NextPageWithLayout = () => {
-  fakeJobs.map((ele: any) => {
-    console.log(ele.category.name);
-  });
+export const JobReqTable = () => {
   const router = useRouter();
   const handleSelected = ({ row }: any) => {};
   const ProgressComponent = <Spinner />;
@@ -49,6 +44,18 @@ const JobsList: NextPageWithLayout = () => {
     // TODO DELETE ACTION
   };
 
+  const [JobReqData, setJobReqData] = useState<any>([]);
+  const [Pending, setPending] = useState();
+
+  const getJobReqData = async () => {
+    const res = await ApiService.getData({url: "/requests/fetch"})
+    setJobReqData(res)
+  }
+
+  useEffect(() => {
+    getJobReqData()
+  }, []);
+
   return (
     <div>
       <div>
@@ -58,10 +65,11 @@ const JobsList: NextPageWithLayout = () => {
         </Button>
       </div>
       <CustomizedTable
-        data={fakeJobs}
+        data={JobReqData}
         columns={JobsColumns}
         handleSelected={handleSelected}
         expandableRows
+        progressPending={Pending}
         expandableRowsComponent={ExpandedComponent}
         ProgressComponent={ProgressComponent}
         onSelectedRowsChange={handleChange}
@@ -70,9 +78,3 @@ const JobsList: NextPageWithLayout = () => {
     </div>
   );
 };
-
-JobsList.getLayout = (page: ReactElement) => {
-  return <LayoutComponent>{page}</LayoutComponent>;
-};
-
-export default JobsList;

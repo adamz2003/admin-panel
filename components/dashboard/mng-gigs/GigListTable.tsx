@@ -1,17 +1,12 @@
 import ConfirmModal from "@/components/includes/ConfirmModal";
 import CustomizedTable from "@/components/includes/dataTable/DataTable";
-import { LayoutComponent } from "@/components/includes/layout";
-import { NextPageWithLayout } from "@/pages/_app";
-import { JobsColumns } from "../../../utils/columns";
-import { fakeJobs } from "@/utils/fakeDatas";
+import ApiService from "@/services/ApiService";
+import { GigColumns } from "@/utils/columns";
 import { Button, Spinner } from "@material-tailwind/react";
 import { useRouter } from "next/router";
-import { ReactElement, useState } from "react";
+import { useEffect, useState } from "react";
 
-const JobsList: NextPageWithLayout = () => {
-  fakeJobs.map((ele: any) => {
-    console.log(ele.category.name);
-  });
+export const GigListTable = () => {
   const router = useRouter();
   const handleSelected = ({ row }: any) => {};
   const ProgressComponent = <Spinner />;
@@ -49,6 +44,19 @@ const JobsList: NextPageWithLayout = () => {
     // TODO DELETE ACTION
   };
 
+  const [GigListData, setGigListData] = useState<any>([]);
+  const [Pending, setPending] = useState(true);
+
+  const getGigData = async () => {
+    const res = await ApiService.getData({url: "/gigs/fetch"});
+    setGigListData(res.data)
+    setPending(false)
+  }
+
+  useEffect(() => {
+    getGigData()
+  }, []);
+
   return (
     <div>
       <div>
@@ -58,21 +66,20 @@ const JobsList: NextPageWithLayout = () => {
         </Button>
       </div>
       <CustomizedTable
-        data={fakeJobs}
-        columns={JobsColumns}
+        data={GigListData}
+        columns={GigColumns}
         handleSelected={handleSelected}
         expandableRows
+        progressPending={Pending}
         expandableRowsComponent={ExpandedComponent}
         ProgressComponent={ProgressComponent}
         onSelectedRowsChange={handleChange}
       />
-      <ConfirmModal open={open} handleOpen={handleOpen} onConfirm={deleteRecordAction} />
+      <ConfirmModal
+        open={open}
+        handleOpen={handleOpen}
+        onConfirm={deleteRecordAction}
+      />
     </div>
   );
 };
-
-JobsList.getLayout = (page: ReactElement) => {
-  return <LayoutComponent>{page}</LayoutComponent>;
-};
-
-export default JobsList;
