@@ -15,7 +15,7 @@ import { getSession, useSession } from "next-auth/react";
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
-export async function getInitialProps (context: GetServerSidePropsContext) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getSession(context);
 
   if (!session) {
@@ -44,7 +44,7 @@ export async function getInitialProps (context: GetServerSidePropsContext) {
 
 export const LayoutComponent = ({ children }: any) => {
   const router = useRouter()
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
 
   const [openNav, setOpenNav] = useState(true);
 

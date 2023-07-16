@@ -42,6 +42,7 @@ export default function SignUp() {
                 <Link
                   href="#"
                   className="font-medium transition-colors hover:text-blue-500"
+                  legacyBehavior
                 >
                   <a>&nbsp;Terms and Conditions</a>
                 </Link>
@@ -57,6 +58,7 @@ export default function SignUp() {
             <Link
               href="/"
               className="font-medium text-blue-500 transition-colors hover:text-blue-700"
+              legacyBehavior
             >
               <a>Sign In</a>
             </Link>
