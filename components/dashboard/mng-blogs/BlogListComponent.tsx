@@ -62,8 +62,8 @@ export const BlogListComponent = () => {
   }, []);
 
   return (
-    <div>
-      <div>
+    <div className="grid gap-8">
+      <div className="flex justify-end gap-2">
         <Button onClick={handlerEdit}>Edit</Button>
         <Button color="red" onClick={handlerDelete}>
           Delete

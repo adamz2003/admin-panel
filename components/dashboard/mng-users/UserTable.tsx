@@ -20,8 +20,11 @@ import CustomizedTable from "@/components/includes/dataTable/DataTable";
 import ConfirmModal from "@/components/includes/ConfirmModal";
 import { UserColumns } from "@/utils/columns";
 import ApiService from "@/services/ApiService";
+import { SkillComponent } from "@/components/includes/SkillComponents";
+import Image from "next/image";
+import personImg from "../../../public/image/persons/p-1.png";
 
-export default function UserTable() {
+export const UserTable = () => {
   const router = useRouter();
   const handleSelected = ({ row }: any) => {};
   const ProgressComponent = <Spinner />;
@@ -29,7 +32,31 @@ export default function UserTable() {
   const [Pending, setPending] = useState(false);
 
   const ExpandedComponent = ({ data }: any) => (
-    <pre>{JSON.stringify(data, null, 2)}</pre>
+    <div>
+      <Card>
+        <CardBody className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
+          <div className="flex flex-row gap-8 items-center">
+            <div className="w-12 h-12">
+              <Image src={personImg} className="rounded-full"></Image>
+            </div>
+            <div>{data.user.firstName + " " + data.user.lastName}</div>
+          </div>
+          <div>Contact Info : {data.user.email}</div>
+          <div>Location: {data.city + "," + data.country}</div>
+          <div>BirthDay: {data.birth}</div>
+          <div>Created At: {data.user.createdAt}</div>
+          <div className="flex">
+            Skills: <SkillComponent data={data.skill} />
+          </div>
+        </CardBody>
+        <CardFooter>
+          <div className="flex justify-end">
+            <Button>More Detail</Button>
+          </div>
+        </CardFooter>
+      </Card>
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+    </div>
   );
 
   const [selectedRows, setSelectedRows] = useState<any>([]);
@@ -58,25 +85,25 @@ export default function UserTable() {
   const handleOpen = () => setOpen(!open);
 
   const deleteRecordAction = () => {
-    setOpen(false)
+    setOpen(false);
     // TODO DELETE ACTION
-  }
+  };
 
   const getUserData = async () => {
-    setPending(true)
-    const res = await ApiService.getData({url:"user-profile/fetch"})
-    setUserData(res.data)
-    setPending(false)
-  }
+    setPending(true);
+    const res = await ApiService.getData({ url: "user-profile/fetch" });
+    setUserData(res.data);
+    setPending(false);
+  };
 
   useEffect(() => {
-    getUserData()
+    getUserData();
   }, []);
 
   return (
-    <div>
-      <div>
-        <Button onClick={handlerEdit}>Edit</Button>
+    <div className="grid gap-8">
+      <div className="flex justify-end gap-2">
+        {/* <Button onClick={handlerEdit}>Edit</Button> */}
         <Button color="red" onClick={handlerDelete}>
           Delete
         </Button>
@@ -91,7 +118,11 @@ export default function UserTable() {
         ProgressComponent={ProgressComponent}
         onSelectedRowsChange={handleChange}
       />
-      <ConfirmModal open={open} handleOpen={handleOpen} onConfirm={deleteRecordAction} />
+      <ConfirmModal
+        open={open}
+        handleOpen={handleOpen}
+        onConfirm={deleteRecordAction}
+      />
     </div>
   );
 }

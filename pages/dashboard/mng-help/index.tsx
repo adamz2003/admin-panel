@@ -1,3 +1,4 @@
+import { HelpListComponent } from "@/components/dashboard/mng-help/HelpListComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MngHelp: NextPageWithLayout = () => {
     return (
         <div>
-            MngHelp
+            <HelpListComponent />
         </div>
     )
 }

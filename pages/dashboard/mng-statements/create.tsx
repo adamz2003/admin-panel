@@ -2,16 +2,16 @@ import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
 
-const EditJobs: NextPageWithLayout = () => {
+const MngStatementCreate: NextPageWithLayout = () => {
     return (
         <div>
-            EditJobs
+            MngStatementCreate
         </div>
     )
 }
 
-EditJobs.getLayout = (page: ReactElement) => {
+MngStatementCreate.getLayout = (page: ReactElement) => {
     return <LayoutComponent>{page}</LayoutComponent>
 }
 
-export default EditJobs
+export default MngStatementCreate

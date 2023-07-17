@@ -1,3 +1,4 @@
+import { StatementListComponent } from "@/components/dashboard/mng-statement/StatementListComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MngStatements: NextPageWithLayout = () => {
     return (
         <div>
-            MngStatements
+            <StatementListComponent />
         </div>
     )
 }

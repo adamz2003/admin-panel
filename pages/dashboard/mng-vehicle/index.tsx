@@ -1,3 +1,4 @@
+import { AddVehicleComponent } from "@/components/dashboard/mng-vehicle/AddVehicleComponents";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MngVehicles: NextPageWithLayout = () => {
     return (
         <div>
-            MngVehicles
+            <AddVehicleComponent />
         </div>
     )
 }

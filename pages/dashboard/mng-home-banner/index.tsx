@@ -1,3 +1,4 @@
+import { HomeBannerListComponent } from "@/components/dashboard/mng-home-banner/HomeBannerListComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MngHomeBanner: NextPageWithLayout = () => {
     return (
         <div>
-            MngHomeBanner
+            <HomeBannerListComponent />
         </div>
     )
 }

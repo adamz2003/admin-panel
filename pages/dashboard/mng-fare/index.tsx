@@ -1,3 +1,4 @@
+import { FareListComponent } from "@/components/dashboard/mng-fare/FareListComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MngFare: NextPageWithLayout = () => {
     return (
         <div>
-            MngFare
+            <FareListComponent />
         </div>
     )
 }

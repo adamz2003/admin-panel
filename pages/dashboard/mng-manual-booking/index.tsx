@@ -1,17 +1,18 @@
+import { UserTable } from "@/components/dashboard/mng-users/UserTable";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
 
 const MngManualBooking: NextPageWithLayout = () => {
-    return (
-        <div>
-            MngManualBooking
-        </div>
-    )
-}
+  return (
+    <div>
+      <UserTable />
+    </div>
+  );
+};
 
 MngManualBooking.getLayout = (page: ReactElement) => {
-    return <LayoutComponent>{page}</LayoutComponent>
-}
+  return <LayoutComponent>{page}</LayoutComponent>;
+};
 
-export default MngManualBooking
+export default MngManualBooking;

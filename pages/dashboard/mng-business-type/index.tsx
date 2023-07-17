@@ -1,3 +1,4 @@
+import { BusinessTypeListComponent } from "@/components/dashboard/mng-business-type/BusinessTypeListComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MngBusinessType: NextPageWithLayout = () => {
     return (
         <div>
-            MngBusinessType
+            <BusinessTypeListComponent />
         </div>
     )
 }
