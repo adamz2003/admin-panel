@@ -7,7 +7,7 @@ import {
     Typography,
   } from "@material-tailwind/react";
   
-  export const CatBlogCategoryComponent = () => {
+  export const CatRatingComponent = () => {
     return (
       <Card variant="gradient" className=" bg-blue-50">
         <CardHeader
@@ -16,12 +16,12 @@ import {
           className="mb-4 grid h-28 place-items-center "
         >
           <Typography variant="h3" color="white">
-            Blog Category
+            Rating
           </Typography>
         </CardHeader>
         <CardBody className="grid gap-8">
           <div className="flex flex-row">
-            <Input variant="static" label="Add Category" />
+            <Input variant="static" label="Add Rating" />
             <Button>ADD</Button>
           </div>
           <Input variant="static" label="Search" />

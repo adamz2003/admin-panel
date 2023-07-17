@@ -21,7 +21,7 @@ export const CatJobsCategoryComponent = () => {
       </CardHeader>
       <CardBody className="grid gap-8">
         <div className="flex flex-row">
-          <Input variant="static" label="Add Skills" />
+          <Input variant="static" label="Add Category" />
           <Button>ADD</Button>
         </div>
         <Input variant="static" label="Search" />

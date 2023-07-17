@@ -57,7 +57,15 @@ const ProfileMenu = () => {
   };
 
   return (
-    <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
+    <Menu
+      animate={{
+        mount: { y: 0 },
+        unmount: { y: 25 },
+      }}
+      open={isMenuOpen}
+      handler={setIsMenuOpen}
+      placement="bottom-end"
+    >
       <MenuHandler>
         <Button
           variant="text"

@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
 import { Navbar, Typography, Switch } from "@material-tailwind/react";
 import ProfileMenu from "./sub/profileMenu";
-import LeftSidebar from "./sidebar";
+import { InboxComponent } from "./sub/Inbox";
+import { Notification } from "./sub/Notification";
 
 export const NavbarComponent = ({ openSidebar, openSidebarStatus }: any) => {
   return (
@@ -20,7 +20,11 @@ export const NavbarComponent = ({ openSidebar, openSidebarStatus }: any) => {
             onChange={() => openSidebar(!openSidebarStatus)}
           />
         </div>
-        <ProfileMenu />
+        <div className="flex space-x-2">
+          <Notification />
+          <InboxComponent />
+          <ProfileMenu />
+        </div>
       </div>
     </Navbar>
   );

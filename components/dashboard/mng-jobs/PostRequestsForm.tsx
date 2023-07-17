@@ -8,7 +8,7 @@ export const PostRequestsForm = () => {
       </div>
       <div className="grid gap-8">
         <Input variant="static" label="Job Title" />
-        <Textarea variant="static" label="Description" />
+        <Textarea variant="static" label="Description" resize={true} />
         <div className="grid lg:grid-cols-2 gap-8">
           <Select variant="static" label="Category">
             <Option>Category</Option>

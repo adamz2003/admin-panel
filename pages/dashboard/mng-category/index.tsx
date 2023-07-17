@@ -1,5 +1,7 @@
 import { CatBlogCategoryComponent } from "@/components/dashboard/mng-category/catBlogCategoryComponent";
+import { CatBlogTagComponent } from "@/components/dashboard/mng-category/catBlogTagComponent";
 import { CatJobsCategoryComponent } from "@/components/dashboard/mng-category/catJobsCategoryComponent";
+import { CatRatingComponent } from "@/components/dashboard/mng-category/catRatingComponent";
 import { CatSkillsCategoryComponent } from "@/components/dashboard/mng-category/catSkillsCategoryComponent";
 import { CatSubJobsCategoryComponent } from "@/components/dashboard/mng-category/catSubJobsCategoryComponent";
 import { LayoutComponent } from "@/components/includes/layout";
@@ -13,6 +15,8 @@ const CategoryList: NextPageWithLayout = () => {
             <CatBlogCategoryComponent />
             <CatJobsCategoryComponent />
             <CatSubJobsCategoryComponent />
+            <CatBlogTagComponent />
+            <CatRatingComponent />
         </div>
     )
 }

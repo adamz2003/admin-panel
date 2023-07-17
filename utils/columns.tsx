@@ -1,6 +1,40 @@
 import { Button, IconButton } from "@material-tailwind/react";
 import { BsTrash3, BsPencilSquare } from "react-icons/bs";
 
+export const TestColumns = [
+  {
+    name: "Name",
+    selector: (row: any) => row.firstName + row.lastName,
+    sortable: true,
+  },
+  {
+    name: "Email",
+    selector: (row: any) => row.email,
+    sortable: true,
+  },
+  {
+    name: "App Version",
+    selector: (row: any) => row.appVersion,
+    sortable: true,
+  },
+  {
+    name: "isActive",
+    selector: (row: any) => {
+      if (row.isActive === "f") {
+        return "offline";
+      } else {
+        return "online";
+      }
+    },
+    sortable: true,
+  },
+  {
+    name: "Created At",
+    selector: (row: any) => row.createdAt,
+    sortable: true,
+  },
+]
+
 export const UserColumns = [
   {
     name: "Name",
