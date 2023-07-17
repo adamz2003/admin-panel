@@ -1,3 +1,4 @@
+import { FaqListComponent } from "@/components/dashboard/mng-faqs/FaqListComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const FaqList: NextPageWithLayout = () => {
     return (
         <div>
-            FaqList
+            <FaqListComponent />
         </div>
     )
 }

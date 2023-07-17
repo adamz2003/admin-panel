@@ -1,3 +1,4 @@
+import UserTable from "@/components/dashboard/mng-users/UserTable";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MngAdmin: NextPageWithLayout = () => {
     return (
         <div>
-            MngAdmin
+            <UserTable />
         </div>
     )
 }

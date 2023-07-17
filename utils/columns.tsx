@@ -214,3 +214,26 @@ export const FaqColumns = [
     sortable: true,
   }
 ]
+
+export const BlogColumns = [
+  {
+    name: "Title",
+    selector: (row: any) => row.title,
+    sortable: true,
+  },
+  {
+    name: "Tag",
+    selector: (row: any) => JSON.stringify(row.blogtag),
+    sortable: true,
+  },
+  {
+    name: "Category",
+    selector: (row: any) => row.blogcategory.name,
+    sortable: true,
+  },
+  {
+    name: "Created At",
+    selector: (row: any) => row.createdAt,
+    sortable: true,
+  }
+]

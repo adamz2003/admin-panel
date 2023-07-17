@@ -9,7 +9,7 @@ import {
   FaGift,
   FaTasks,
   FaRocketchat,
-  FaThumbsUp
+  FaThumbsUp,
 } from "react-icons/fa";
 
 export const sidebarMenuList = [
@@ -117,7 +117,17 @@ export const sidebarMenuList = [
   {
     img: <FaQuestion className="h-5 w-5" />,
     title: "Manage FAQ",
-    url: "/dashboard/mng-faq",
+    url: "",
+    subMenu: [
+      {
+        title: "Requests",
+        url: "/dashboard/mng-faq",
+      },
+      {
+        title: "Create",
+        url: "/dashboard/mng-faq/create",
+      }
+    ]
   },
   {
     img: <FaCog className="h-5 w-5" />,
@@ -135,11 +145,11 @@ export const sidebarMenuList = [
       },
       {
         title: "App Version",
-        url: "/dashboard/mng-setting/post",
+        url: "/dashboard/mng-setting/app-version",
       },
       {
         title: "Mobile Language",
-        url: "/dashboard/mng-setting/post",
+        url: "/dashboard/mng-setting/mobile-language",
       },
     ],
   },
