@@ -7,11 +7,16 @@ import {
   MenuList,
   Typography,
 } from "@material-tailwind/react";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { FaMailBulk } from "react-icons/fa";
 
 export const InboxComponent = () => {
+  const router = useRouter()
   const [openRight, setOpenRight] = useState(false);
+  const gotoLiveChat = () => {
+    router.push("/dashboard/live-chat")
+  }
   return (
     <Menu
       animate={{
@@ -26,9 +31,9 @@ export const InboxComponent = () => {
         </IconButton>
       </MenuHandler>
       <MenuList>
-        <MenuItem>Menu Item 1</MenuItem>
-        <MenuItem>Menu Item 2</MenuItem>
-        <MenuItem>Menu Item 3</MenuItem>
+        <MenuItem onClick={gotoLiveChat}>Menu Item 1</MenuItem>
+        <MenuItem onClick={gotoLiveChat}>Menu Item 2</MenuItem>
+        <MenuItem onClick={gotoLiveChat}>Menu Item 3</MenuItem>
       </MenuList>
     </Menu>
   );

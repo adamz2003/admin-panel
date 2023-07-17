@@ -28,7 +28,7 @@ const PostBlogComponent: NextPageWithLayout = () => {
 
   const getBlogCategory = async () => {
     const res = await ApiService.getData({url: '/blogcategory/fetch'})
-    setCategories(res)
+    setCategories(res.data)
   }
 
   useEffect(() => {
@@ -83,7 +83,7 @@ const PostBlogComponent: NextPageWithLayout = () => {
 
   return (
     <div className="grid gap-8">
-      <div className="h-[300px] w-[500px] bg-cyan-500"></div>
+      {/* <div className="h-[300px] w-[500px] bg-cyan-500"></div> */}
       <div className="flex justify-end">
         <Button onClick={saveBlogPage}>Post</Button>
       </div>

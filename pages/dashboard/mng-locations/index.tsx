@@ -1,17 +1,18 @@
+import { LocationListComponent } from "@/components/dashboard/mng-location/LocationListComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
 
-const EditJobs: NextPageWithLayout = () => {
+const MngLocation: NextPageWithLayout = () => {
     return (
         <div>
-            mng-location
+            <LocationListComponent />
         </div>
     )
 }
 
-EditJobs.getLayout = (page: ReactElement) => {
+MngLocation.getLayout = (page: ReactElement) => {
     return <LayoutComponent>{page}</LayoutComponent>
 }
 
-export default EditJobs
+export default MngLocation

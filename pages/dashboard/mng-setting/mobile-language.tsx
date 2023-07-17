@@ -1,3 +1,4 @@
+import { AppLanguageSetComponent } from "@/components/dashboard/mng-setting/AppLanguageSetComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MobileLanguage: NextPageWithLayout = () => {
     return (
         <div>
-            MobileLanguage
+            <AppLanguageSetComponent />
         </div>
     )
 }

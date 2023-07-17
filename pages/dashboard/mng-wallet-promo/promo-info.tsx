@@ -1,17 +1,18 @@
+import { PromoListComponent } from "@/components/dashboard/mng-wallet-promo/PromoListComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
 
-const MngStores: NextPageWithLayout = () => {
+const PromoInfo: NextPageWithLayout = () => {
     return (
         <div>
-            MngStores
+            <PromoListComponent />
         </div>
     )
 }
 
-MngStores.getLayout = (page: ReactElement) => {
+PromoInfo.getLayout = (page: ReactElement) => {
     return <LayoutComponent>{page}</LayoutComponent>
 }
 
-export default MngStores
+export default PromoInfo

@@ -1,22 +1,9 @@
-import UserTable from "@/components/dashboard/mng-users/UserTable";
-import ConfirmModal from "@/components/includes/ConfirmModal";
-import CustomizedTable from "@/components/includes/dataTable/DataTable";
+import {UserTable} from "@/components/dashboard/mng-users/UserTable";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Spinner,
-  Typography,
-} from "@material-tailwind/react";
-import { useRouter } from "next/router";
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 
 const MngUsers: NextPageWithLayout = () => {
-  
-
   return (
     <div>
       <UserTable />

@@ -9,7 +9,7 @@ import {
   FaGift,
   FaTasks,
   FaRocketchat,
-  FaThumbsUp
+  FaThumbsUp,
 } from "react-icons/fa";
 
 export const sidebarMenuList = [
@@ -36,17 +36,17 @@ export const sidebarMenuList = [
   {
     img: <FaUsers className="h-5 w-5" />,
     title: "Manage Users",
-    url: "",
-    subMenu: [
-      {
-        title: "Users List",
-        url: "/dashboard/mng-user",
-      },
-      {
-        title: "Add Users",
-        url: "/dashboard/mng-user/add",
-      },
-    ],
+    url: "/dashboard/mng-user",
+    // subMenu: [
+    //   {
+    //     title: "Users List",
+    //     url: "/dashboard/mng-user",
+    //   },
+    //   {
+    //     title: "Add Users",
+    //     url: "/dashboard/mng-user/add",
+    //   },
+    // ],
   },
   {
     img: <FaTasks className="h-5 w-5" />,
@@ -93,6 +93,16 @@ export const sidebarMenuList = [
     img: <FaRocketchat className="h-5 w-5" />,
     title: "Manage Messages",
     url: "/dashboard/mng-msgs",
+    // subMenu: [
+    //   {
+    //     title: "Request List",
+    //     url: "/dashboard/mng-msgs",
+    //   },
+    //   {
+    //     title: "Live Chat",
+    //     url: "/dashboard/mng-msgs/live-chat",
+    //   },
+    // ],
   },
   {
     img: <FaBlog className="h-5 w-5" />,
@@ -117,12 +127,32 @@ export const sidebarMenuList = [
   {
     img: <FaQuestion className="h-5 w-5" />,
     title: "Manage FAQ",
-    url: "/dashboard/mng-faq",
+    url: "",
+    subMenu: [
+      {
+        title: "Requests",
+        url: "/dashboard/mng-faq",
+      },
+      {
+        title: "Create",
+        url: "/dashboard/mng-faq/create",
+      },
+    ],
   },
   {
     img: <FaCog className="h-5 w-5" />,
     title: "Manage Locations",
     url: "/dashboard/mng-locations",
+    subMenu: [
+      {
+        title: "Location List",
+        url: "/dashboard/mng-locations"
+      },
+      {
+        title: "Add",
+        url: "/dashboard/mng-locations/add"
+      }
+    ]
   },
   {
     img: <FaCog className="h-5 w-5" />,
@@ -135,11 +165,11 @@ export const sidebarMenuList = [
       },
       {
         title: "App Version",
-        url: "/dashboard/mng-setting/post",
+        url: "/dashboard/mng-setting/app-version",
       },
       {
         title: "Mobile Language",
-        url: "/dashboard/mng-setting/post",
+        url: "/dashboard/mng-setting/mobile-language",
       },
     ],
   },
@@ -152,16 +182,49 @@ export const sidebarMenuList = [
     img: <FaCog className="h-5 w-5" />,
     title: "Manage Wallet & Promo",
     url: "/dashboard/mng-wallet-promo",
+    subMenu: [
+      {
+        title: "Wallet Information",
+        url: "/dashboard/mng-wallet-promo/wallet-info",
+      },
+      {
+        title: "Promo List",
+        url: "/dashboard/mng-wallet-promo/promo-info",
+      },
+    ],
   },
   {
     img: <FaCog className="h-5 w-5" />,
     title: "Manage Statements",
     url: "/dashboard/mng-statements",
+    subMenu: [
+      {
+        title: "Create Statement",
+        url: "/dashboard/mng-statements/create",
+      },
+      {
+        title: "Statement List",
+        url: "/dashboard/mng-statements",
+      },
+    ],
   },
   {
     img: <FaCog className="h-5 w-5" />,
     title: "Manage Manual Booking",
-    url: "/dashboard/mng-manual-booking",
+    subMenu: [
+      {
+        title: "Customers List",
+        url: "/dashboard/mng-manual-booking",
+      },
+      // {
+      //   title: "Create Booking",
+      //   url: "/dashboard/mng-manual-booking/create",
+      // },
+      // {
+      //   title: "Edit Booking",
+      //   url: "/dashboard/mng-manual-booking/edit",
+      // },
+    ],
   },
   {
     img: <FaCog className="h-5 w-5" />,
@@ -177,11 +240,43 @@ export const sidebarMenuList = [
     img: <FaCog className="h-5 w-5" />,
     title: "Manage Home Banner",
     url: "/dashboard/mng-home-banner",
+    subMenu: [
+      {
+        title: "Banner List",
+        url: "/dashboard/mng-home-banner",
+      },
+      {
+        title: "Edit Properties",
+        url: "/dashboard/mng-home-banner/edit"
+      }
+    ],
   },
   {
     img: <FaCog className="h-5 w-5" />,
     title: "Manage Providers",
     url: "/dashboard/mng-provider",
+    subMenu: [
+      {
+        title: "Provider List",
+        url: "/dashboard/mng-provider"
+      },
+      // {
+      //   title: "Contract Management",
+      //   url: "/dashboard/mng-provider/mng-contract"
+      // },
+      // {
+      //   title: "Performance Management",
+      //   url: "/dashboard/mng-provider/mng-performance"
+      // },
+      // {
+      //   title: "Risk Management",
+      //   url: "/dashboard/mng-provider/mng-risk"
+      // },
+      // {
+      //   title: "Relationship",
+      //   url: "/dashboard/mng-provider/mng-relation"
+      // }
+    ]
   },
   {
     img: <FaCog className="h-5 w-5" />,
@@ -192,6 +287,16 @@ export const sidebarMenuList = [
     img: <FaCog className="h-5 w-5" />,
     title: "Manage Stores",
     url: "/dashboard/mng-store",
+    subMenu: [
+      {
+        title: "Stores List",
+        url: "/dashboard/mng-store",
+      },
+      {
+        title: "Create",
+        url: "/dashboard/mng-store/create",
+      },
+    ],
   },
   {
     img: <FaCog className="h-5 w-5" />,

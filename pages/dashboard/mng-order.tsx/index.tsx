@@ -1,3 +1,4 @@
+import { CompanyListComponent } from "@/components/dashboard/mng-company/CompanyListComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MngOrder: NextPageWithLayout = () => {
     return (
         <div>
-            MngOrder
+            <CompanyListComponent />
         </div>
     )
 }

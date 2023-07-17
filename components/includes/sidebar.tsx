@@ -14,7 +14,7 @@ import { sidebarMenuList } from "../../utils/sidebarMenu";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
 
-export default function LeftSidebar({ show, onShow }: any) {
+export default function LeftSidebar({ show, onShow, ref }: any) {
   const router = useRouter();
   const [open, setOpen] = React.useState(0);
 
@@ -41,14 +41,15 @@ export default function LeftSidebar({ show, onShow }: any) {
 
   return (
     <Card
+      ref={ref}
       className={
         // "text-gray-100 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full lg:relative lg:translate-x-0 transition duration-200 ease-in-out"
-        "w-full max-w-[16rem] py-4 shadow-xl shadow-blue-gray-900/5 rounded-none " +
+        "w-full max-w-[16rem] py-4 shadow-xl shadow-blue-gray-900/5 rounded-none flex-grow-0 flex-shrink-0 flex-auto overflow-y-auto " +
         (show
           ? "ease-in-left transition ease-out duration-100"
           : "hidden translate") +
         " " +
-        (openNav ? "" : "fixed top-0 left-0 h-full z-20")
+        (openNav ? "" : "fixed top-0 left-0 z-20")
       }
     >
       <List>

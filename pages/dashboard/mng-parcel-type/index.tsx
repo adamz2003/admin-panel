@@ -1,3 +1,4 @@
+import { ParcelTypeComponent } from "@/components/dashboard/mng-parcel-type/ParcelTypeComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MngParcelType: NextPageWithLayout = () => {
     return (
         <div>
-            MngParcelType
+            <ParcelTypeComponent />
         </div>
     )
 }
