@@ -86,7 +86,7 @@ export const ReasonListComponent = () => {
           Delete
         </Button>
       </div>
-      <CustomizedTable
+      {/* <CustomizedTable
         data={Ovcw}
         columns={ReasonColumns}
         handleSelected={handleSelected}
@@ -95,7 +95,7 @@ export const ReasonListComponent = () => {
         expandableRowsComponent={ExpandedComponent}
         ProgressComponent={ProgressComponent}
         onSelectedRowsChange={handleChange}
-      />
+      /> */}
       <ConfirmModal
         open={open}
         handleOpen={handleOpen}
