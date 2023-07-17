@@ -2,16 +2,16 @@ import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
 
-const BlogsList: NextPageWithLayout = () => {
+const MngGigsDispute: NextPageWithLayout = () => {
     return (
         <div>
-            
+            MngGigsDispute
         </div>
     )
 }
 
-BlogsList.getLayout = (page: ReactElement) => {
+MngGigsDispute.getLayout = (page: ReactElement) => {
     return <LayoutComponent>{page}</LayoutComponent>
 }
 
-export default BlogsList
+export default MngGigsDispute

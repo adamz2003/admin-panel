@@ -22,6 +22,7 @@ import notify from "@/utils/toast";
 import ApiService from "@/services/ApiService";
 import { setCookie } from "cookies-next";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
+import { ToastContainer } from "react-toastify";
 
 const frontEndUrl = process.env.FRONTEND_URL || "http://localhost:3000";
 
@@ -29,13 +30,13 @@ export default function Home() {
   const email = useRef<any>(null);
   const pwd = useRef<any>(null);
   const router = useRouter();
-  const [ErrAlert, setErrAlert] = useState(false);
 
   const gotoDashboard = async () => {
     const UserEmail = email.current.value;
     const Password = pwd.current.value;
     if (!UserEmail || !Password) {
-      setErrAlert(true)
+      notify.error("Please check your email or password!")
+      return
     }
     const res: any = await signIn("credentials", {
       username: UserEmail,
@@ -51,7 +52,7 @@ export default function Home() {
       });
       notify.success("Successful! Redirecting...");
       router.push(frontEndUrl + "/dashboard");
-    } else setErrAlert(true);
+    } else notify.error(res.error);
   };
 
   const signInWithGoogle = async () => {
@@ -65,6 +66,7 @@ export default function Home() {
       <Head>
         <title>BuBe Admin Panel</title>
       </Head>
+      <ToastContainer />
       <Card className="mx-auto w-full max-w-[24rem]">
         <CardHeader
           variant="gradient"
@@ -76,17 +78,6 @@ export default function Home() {
           </Typography>
         </CardHeader>
         <CardBody className="flex flex-col gap-4">
-          {ErrAlert && (
-            <Alert
-              color="red"
-              icon={
-                <InformationCircleIcon strokeWidth={2} className="h-4 w-4" />
-              }
-              className="text-xs"
-            >
-              Please check your email or password!
-            </Alert>
-          )}
           <Button
             size="lg"
             variant="outlined"
@@ -106,8 +97,8 @@ export default function Home() {
             <BsFacebook className="w-6 h-6" />
             <Typography>Continue with facebook</Typography>
           </Button>
-          <Input label="Email" size="lg" inputRef={email} onChange={() => setErrAlert(false)} />
-          <Input type="password" label="Password" size="lg" inputRef={pwd} onChange={() => setErrAlert(false)} />
+          <Input label="Email" size="lg" inputRef={email} />
+          <Input type="password" label="Password" size="lg" inputRef={pwd} />
           <div className="-ml-2.5">
             <Checkbox label="Remember Me" />
           </div>

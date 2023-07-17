@@ -1,5 +1,5 @@
 import { LayoutComponent } from "@/components/includes/layout";
-import { UserColumns } from "@/utils/columns";
+import { TestColumns } from "../../utils/columns";
 import { userList } from "@/utils/fakeDatas";
 import { Button, Spinner } from "@material-tailwind/react";
 import { ReactElement, useCallback, useEffect, useMemo, useState } from "react";
@@ -25,7 +25,7 @@ const MyComponent: NextPageWithLayout = () => {
         Delete
       </Button>
       <DataTable
-        columns={UserColumns}
+        columns={TestColumns}
         data={userList}
         selectableRows
         // onSelectedRowsChange={handleRowSelected}

@@ -45,8 +45,6 @@ export const LayoutComponent = ({ children }: any) => {
   const router = useRouter()
   const { data: session, status } = useSession();
 
-  console.log(session, "session")
-  console.log(status, "status")
   const [openNav, setOpenNav] = useState(true);
 
   useEffect(() => {
@@ -56,10 +54,6 @@ export const LayoutComponent = ({ children }: any) => {
     });
   }, []);
   
-  if(status === "loading"){
-    return <p>Loading ...</p>
-  }
-
   if(status === "unauthenticated"){
     router.push("/")
   } 
@@ -106,4 +100,6 @@ export const LayoutComponent = ({ children }: any) => {
       </div>
     );
   }
+
+  return <div className="flex justify-center items-center min-h-screen"><p>Loading ...</p></div>
 };
