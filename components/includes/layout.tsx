@@ -67,7 +67,7 @@ export const LayoutComponent = ({ children }: any) => {
     return (
       <div>
         <Head>
-          <title>BuBe Admin Panel</title>
+          <title>Admin Panel</title>
         </Head>
         <ToastContainer />
         <NavbarComponent
