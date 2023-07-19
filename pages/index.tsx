@@ -24,7 +24,7 @@ import { setCookie } from "cookies-next";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { ToastContainer } from "react-toastify";
 
-const frontEndUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+const frontEndUrl = process.env.FRONTEND_URL || "http://localhost:3030";
 
 export default function Home() {
   const email = useRef<any>(null);
@@ -43,7 +43,7 @@ export default function Home() {
       password: Password,
       redirect: false,
     });
-    console.log(res)
+
     if (res.error === null) {
       const user = await ApiService.getData({ url: `/users/${UserEmail}` });
       setCookie("NewUserId", user.id, {

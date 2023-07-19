@@ -28,12 +28,12 @@ export const UserTable = () => {
   const router = useRouter();
   const handleSelected = ({ row }: any) => {};
   const ProgressComponent = <Spinner />;
-  const [UserData, setUserData] = useState<any>([]);
+  const [DisputeListData, setDisputeListData] = useState<any>([]);
   const [Pending, setPending] = useState(false);
 
   const ExpandedComponent = ({ data }: any) => (
     <div>
-      <Card>
+      {/* <Card>
         <CardBody className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
           <div className="flex flex-row gap-8 items-center">
             <div className="w-12 h-12">
@@ -54,8 +54,8 @@ export const UserTable = () => {
             <Button>More Detail</Button>
           </div>
         </CardFooter>
-      </Card>
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+      </Card> */}
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
 
@@ -91,8 +91,8 @@ export const UserTable = () => {
 
   const getUserData = async () => {
     setPending(true);
-    const res = await ApiService.getData({ url: "user-profile/fetch" });
-    setUserData(res.data);
+    const res = await ApiService.getData({ url: "dispute/fetch" });
+    setDisputeListData(res.data);
     setPending(false);
   };
 
@@ -100,16 +100,20 @@ export const UserTable = () => {
     getUserData();
   }, []);
 
+  const gotoAddUser = () => {
+    router.push('/dashboard/mng-user/add')
+  }
+
   return (
     <div className="grid gap-8">
       <div className="flex justify-end gap-2">
-        {/* <Button onClick={handlerEdit}>Edit</Button> */}
+        <Button onClick={gotoAddUser}>Add</Button>
         <Button color="red" onClick={handlerDelete}>
           Delete
         </Button>
       </div>
       <CustomizedTable
-        data={UserData}
+        data={DisputeListData}
         columns={UserColumns}
         handleSelected={handleSelected}
         expandableRows

@@ -779,3 +779,133 @@ export const ReasonColumns = [
     sortable: true,
   },
 ];
+
+export const OweAmountColumns = [
+  {
+    name: "ID",
+    selector: (row: any) => row.id,
+    sortable: true
+  },
+  {
+    name: "User ID",
+    selector: (row: any) => row.user_id,
+    sortable: true,
+  },
+  {
+    name: "Amount",
+    selector: (row: any) => row.amount,
+    sortable: true,
+  },
+  {
+    name: "Description",
+    selector: (row: any) => row.description,
+    sortable: true,
+  },
+];
+
+export const StoreOweAmountListColumns = [
+  {
+    name: "ID",
+    selector: (row: any) => row.id,
+    sortable: true
+  },
+  {
+    name: "Store ID",
+    selector: (row: any) => row.store_id,
+    sortable: true,
+  },
+  {
+    name: "Amount",
+    selector: (row: any) => row.amount,
+    sortable: true,
+  },
+  {
+    name: "Description",
+    selector: (row: any) => row.description,
+    sortable: true,
+  },
+]
+
+export const StorePayoutListColumns = [
+  {
+    name: "ID",
+    selector: (row: any) => row.id,
+    sortable: true
+  },
+  {
+    name: "Store ID",
+    selector: (row: any) => row.store_id,
+    sortable: true,
+  },
+  {
+    name: "Amount",
+    selector: (row: any) => row.amount,
+    sortable: true,
+  },
+  {
+    name: "Date",
+    selector: (row: any) => row.date,
+    sortable: true,
+  },
+  {
+    name: "Status",
+    selector: (row: any) => row.status,
+    sortable: true,
+  },
+]
+
+export const PenaltyListColumns = [
+  {
+    name: "ID",
+    selector: (row: any) => row.id,
+    sortable: true
+  },
+  {
+    name: "Store ID",
+    selector: (row: any) => row.store_id,
+    sortable: true,
+  },
+  {
+    name: "Amount",
+    selector: (row: any) => row.amount,
+    sortable: true,
+  },
+  {
+    name: "Description",
+    selector: (row: any) => row.description,
+    sortable: true,
+  },
+  {
+    name: "Date",
+    selector: (row: any) => row.date,
+    sortable: true,
+  },
+]
+
+export const DisputeColumns = [
+  {
+    name: "ID",
+    selector: (row: any) => row.id,
+    sortable: true
+  },
+  {
+    name: "Requester",
+    selector: (row: any) => row.seller.firstName + " " + row.seller.lastName,
+    sortable: true,
+  },
+  {
+    name: "Title",
+    selector: (row: any) => row.job.title,
+    sortable: true,
+  },
+  {
+    name: "status",
+    selector: (row: any) => row.status,
+    sortable: true,
+  },
+  {
+    name: "Date",
+    selector: (row: any) => row.date,
+    sortable: true,
+  },
+]

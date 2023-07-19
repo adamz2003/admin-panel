@@ -1,3 +1,4 @@
+import { PenaltyListComponent } from "@/components/dashboard/mng-penalty/PenaltyListComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MngPenalty: NextPageWithLayout = () => {
     return (
         <div>
-            MngPenalty
+            <PenaltyListComponent />
         </div>
     )
 }

@@ -47,8 +47,10 @@ const PostBlogComponent: NextPageWithLayout = () => {
     });
 
     if(image.width < 500 || image.height < 300){
-      setPreviewImgSize(false);
-      notify.error('the dimension of preview image is small. set over 500x300.')
+      // setPreviewImgSize(false);
+      // notify.error('the dimension of preview image is small. set over 500x300.')
+    } else {
+      setPreviewImgSize(true);
     }
   };
 
@@ -58,8 +60,8 @@ const PostBlogComponent: NextPageWithLayout = () => {
       !titleRef.current.value ||
       !SelCategory ||
       !editorRef.current.getContent() ||
-      !previewImg.current.files[0] ||
-      !PreviewImgSize
+      // !PreviewImgSize ||
+      !previewImg.current.files[0]
     ) {
       notify.error("Please check your data!");
       return;

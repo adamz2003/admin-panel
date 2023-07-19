@@ -57,10 +57,14 @@ export const GigListTable = () => {
     getGigData()
   }, []);
 
+  const gotoAddUser = () => {
+    router.push("/dashboard/mng-gigs/post")
+  }
+
   return (
     <div>
-      <div>
-        <Button onClick={handlerEdit}>Edit</Button>
+      <div className="flex justify-end gap-2">
+        <Button onClick={gotoAddUser}>Add</Button>
         <Button color="red" onClick={handlerDelete}>
           Delete
         </Button>
