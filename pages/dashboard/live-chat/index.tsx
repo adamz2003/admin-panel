@@ -1,5 +1,7 @@
 const LiveChat = () => {
-  return <div>LiveChat</div>;
+  return <div>
+    
+  </div>;
 };
 
 export default LiveChat;

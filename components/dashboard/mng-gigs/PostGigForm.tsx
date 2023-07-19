@@ -8,8 +8,13 @@ import {
   Textarea,
   Typography,
 } from "@material-tailwind/react";
+import { useRef } from "react";
 
 export const PostGigForm = () => {
+  const titleRef = useRef<any>(null)
+  const descriptionRef = useRef<any>(null)
+  const priceRef = useRef<any>(null)
+  const paymentRef = useRef<any>(null)
 
   const handlerSubmit = () => {
     notify.success("Successful!")

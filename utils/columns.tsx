@@ -890,7 +890,12 @@ export const DisputeColumns = [
   },
   {
     name: "Requester",
-    selector: (row: any) => row.seller.firstName + " " + row.seller.lastName,
+    selector: (row: any) => row.requester.firstName + " " + row.requester.lastName,
+    sortable: true,
+  },
+  {
+    name: "Wanted",
+    selector: (row: any) => row.job.wanted.firstName + " " + row.job.wanted.lastName,
     sortable: true,
   },
   {
@@ -904,8 +909,8 @@ export const DisputeColumns = [
     sortable: true,
   },
   {
-    name: "Date",
-    selector: (row: any) => row.date,
+    name: "Request Date",
+    selector: (row: any) => row.createdAt,
     sortable: true,
   },
 ]
