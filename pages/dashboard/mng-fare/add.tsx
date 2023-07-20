@@ -1,18 +1,18 @@
-import { CreateStoreComponent } from "@/components/dashboard/mng-store/CreateStoreComponent";
+import { AddFareComponent } from "@/components/dashboard/mng-fare/AddFareComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
 
-const CreateStore: NextPageWithLayout = () => {
+const MngFare: NextPageWithLayout = () => {
     return (
         <div>
-            <CreateStoreComponent />
+            <AddFareComponent />
         </div>
     )
 }
 
-CreateStore.getLayout = (page: ReactElement) => {
+MngFare.getLayout = (page: ReactElement) => {
     return <LayoutComponent>{page}</LayoutComponent>
 }
 
-export default CreateStore
+export default MngFare

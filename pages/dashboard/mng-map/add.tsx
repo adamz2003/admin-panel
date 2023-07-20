@@ -1,18 +1,18 @@
-import { CreateStoreComponent } from "@/components/dashboard/mng-store/CreateStoreComponent";
+import { AddMapComponent } from "@/components/dashboard/mng-map/AddMapComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
 
-const CreateStore: NextPageWithLayout = () => {
+const MngMap: NextPageWithLayout = () => {
     return (
         <div>
-            <CreateStoreComponent />
+            <AddMapComponent />
         </div>
     )
 }
 
-CreateStore.getLayout = (page: ReactElement) => {
+MngMap.getLayout = (page: ReactElement) => {
     return <LayoutComponent>{page}</LayoutComponent>
 }
 
-export default CreateStore
+export default MngMap

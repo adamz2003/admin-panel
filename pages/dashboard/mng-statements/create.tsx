@@ -1,3 +1,4 @@
+import { CreateStateComponent } from "@/components/dashboard/mng-statement/CreateStatementComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MngStatementCreate: NextPageWithLayout = () => {
     return (
         <div>
-            MngStatementCreate
+            <CreateStateComponent />
         </div>
     )
 }

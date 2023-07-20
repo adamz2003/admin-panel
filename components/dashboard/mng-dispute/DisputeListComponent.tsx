@@ -29,32 +29,27 @@ import {
     const ProgressComponent = <Spinner />;
     const [DisputeListData, setDisputeListData] = useState<any>([]);
     const [Pending, setPending] = useState(false);
+
+    const gotoLiveChatPage = () => {
+      router.push("/dashboard/live-chat")
+    }
   
     const ExpandedComponent = ({ data }: any) => (
-      <div>
-        {/* <Card>
-          <CardBody className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
-            <div className="flex flex-row gap-8 items-center">
-              <div className="w-12 h-12">
-                <Image src={personImg} className="rounded-full"></Image>
-              </div>
-              <div>{data.user.firstName + " " + data.user.lastName}</div>
-            </div>
-            <div>Contact Info : {data.user.email}</div>
-            <div>Location: {data.city + "," + data.country}</div>
-            <div>BirthDay: {data.birth}</div>
-            <div>Created At: {data.user.createdAt}</div>
-            <div className="flex">
-              Skills: <SkillComponent data={data.skill} />
-            </div>
+      <div className="w-full">
+        <Card>
+          <CardBody className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-center break-all">
+            {
+              JSON.stringify(data)
+            }            
           </CardBody>
           <CardFooter>
-            <div className="flex justify-end">
+            <div className="flex justify-end gap-2">
               <Button>More Detail</Button>
+              <Button onClick={gotoLiveChatPage}>Chat</Button>
             </div>
           </CardFooter>
-        </Card> */}
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        </Card>
+        {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
       </div>
     );
   

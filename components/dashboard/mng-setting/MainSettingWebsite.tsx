@@ -1,3 +1,4 @@
+import notify from "@/utils/toast";
 import {
     Button,
   Card,
@@ -9,6 +10,9 @@ import {
 } from "@material-tailwind/react";
 
 export const MainSettingWebsite = () => {
+  const handleSubmit = () => {
+    notify.success("Successful!")
+  }
   return (
     <div className="space-y-12">
       <Card className="bg-blue-50">
@@ -38,11 +42,11 @@ export const MainSettingWebsite = () => {
             </div>
           </div>
           <Input variant="static" label="Address Information" />
-          <div className="grid lg:grid-cols-2">
+          <div className="grid lg:grid-cols-2 gap-8">
             <Input variant="static" label="Admin Receive Email" />
             <Input variant="static" label="Email" />
           </div>
-          <div className="grid lg:grid-cols-2">
+          <div className="grid lg:grid-cols-2 gap-8">
             <Input variant="static" label="Contact No" />
             <Input variant="static" label="Copy Right Content" />
           </div>
@@ -169,7 +173,7 @@ export const MainSettingWebsite = () => {
       </Card>
       <Card className="bg-blue-50">
         <CardBody className="grid gap-8">
-            <Button variant="gradient" className="">
+            <Button variant="gradient" className="" onClick={handleSubmit}>
                 Save
             </Button>
         </CardBody>
