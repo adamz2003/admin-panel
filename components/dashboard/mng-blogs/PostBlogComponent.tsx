@@ -27,12 +27,12 @@ const PostBlogComponent: NextPageWithLayout = () => {
   };
 
   const getBlogCategory = async () => {
-    const res = await ApiService.getData({url: '/blogcategory/fetch'})
-    setCategories(res.data)
-  }
+    const res = await ApiService.getData({ url: "/blogcategory/fetch" });
+    setCategories(res.data);
+  };
 
   useEffect(() => {
-    getBlogCategory()
+    getBlogCategory();
   }, []);
 
   const handleUploadImage = async (e: any) => {
@@ -46,9 +46,11 @@ const PostBlogComponent: NextPageWithLayout = () => {
       image.onload = resolve;
     });
 
-    if(image.width < 500 || image.height < 300){
-      setPreviewImgSize(false);
-      notify.error('the dimension of preview image is small. set over 500x300.')
+    if (image.width < 500 || image.height < 300) {
+      // setPreviewImgSize(false);
+      // notify.error('the dimension of preview image is small. set over 500x300.')
+    } else {
+      setPreviewImgSize(true);
     }
   };
 
@@ -58,8 +60,8 @@ const PostBlogComponent: NextPageWithLayout = () => {
       !titleRef.current.value ||
       !SelCategory ||
       !editorRef.current.getContent() ||
-      !previewImg.current.files[0] ||
-      !PreviewImgSize
+      // !PreviewImgSize ||
+      !previewImg.current.files[0]
     ) {
       notify.error("Please check your data!");
       return;
@@ -87,11 +89,7 @@ const PostBlogComponent: NextPageWithLayout = () => {
       <div className="flex justify-end">
         <Button onClick={saveBlogPage}>Post</Button>
       </div>
-      <Input
-        variant="static"
-        label="Title"
-        inputRef={titleRef}
-      ></Input>
+      <Input variant="static" label="Title" inputRef={titleRef}></Input>
       <div className="grid lg:grid-cols-2 gap-8">
         <Input
           variant="static"
@@ -105,13 +103,24 @@ const PostBlogComponent: NextPageWithLayout = () => {
           label="Category"
           onChange={(e: any) => setSelCategory(e)}
         >
-          {
-            Categories.map((ele:any, idx:number) => (
-              <Option value={ele.id} key={idx}>{ele.name}</Option>
-            ))
-          }
+          {Categories.map((ele: any, idx: number) => (
+            <Option value={ele.id} key={idx}>
+              {ele.name}
+            </Option>
+          ))}
         </Select>
       </div>
+      <Select
+        variant="static"
+        label="Blog Tag"
+        onChange={(e: any) => setSelCategory(e)}
+      >
+        {Categories.map((ele: any, idx: number) => (
+          <Option value={ele.id} key={idx}>
+            {ele.name}
+          </Option>
+        ))}
+      </Select>
       <div>
         <Editor
           apiKey="35a34n7jou0jbf0zwz8h70zqqavvt8qcz7f28uyupdsywlnj"

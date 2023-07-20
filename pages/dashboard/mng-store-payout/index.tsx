@@ -1,3 +1,4 @@
+import { StorePayoutListComponent } from "@/components/dashboard/mng-store-payout/StorePayoutListComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -5,7 +6,7 @@ import { ReactElement } from "react";
 const MngStorePayout: NextPageWithLayout = () => {
     return (
         <div>
-            MngStorePayout
+            <StorePayoutListComponent />
         </div>
     )
 }

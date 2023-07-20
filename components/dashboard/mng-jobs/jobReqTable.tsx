@@ -49,17 +49,21 @@ export const JobReqTable = () => {
 
   const getJobReqData = async () => {
     const res = await ApiService.getData({url: "/requests/fetch"})
-    setJobReqData(res)
+    setJobReqData(res.data)
   }
 
   useEffect(() => {
     getJobReqData()
   }, []);
 
+  const gotoNewJob = () => {
+    router.push('/dashboard/mng-jobs/post')
+  }
+
   return (
-    <div>
-      <div>
-        <Button onClick={handlerEdit}>Edit</Button>
+    <div className="">
+      <div className="flex justify-end gap-2">
+        <Button onClick={gotoNewJob}>Post</Button>
         <Button color="red" onClick={handlerDelete}>
           Delete
         </Button>

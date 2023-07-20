@@ -1,4 +1,5 @@
 import CustomizedTable from "@/components/includes/dataTable/DataTable";
+import notify from "@/utils/toast";
 import {
     Button,
   Card,
@@ -7,12 +8,21 @@ import {
   Textarea,
   Typography,
 } from "@material-tailwind/react";
+import { useRef } from "react";
 
 export const PostGigForm = () => {
+  const titleRef = useRef<any>(null)
+  const descriptionRef = useRef<any>(null)
+  const priceRef = useRef<any>(null)
+  const paymentRef = useRef<any>(null)
+
+  const handlerSubmit = () => {
+    notify.success("Successful!")
+  }
   return (
     <div>
       <div className="flex justify-end">
-        <Button>Post a Gig</Button>
+        <Button onClick={handlerSubmit}>Post a Gig</Button>
       </div>
       <div className="grid gap-8">
         <Input variant="static" label="Title" />

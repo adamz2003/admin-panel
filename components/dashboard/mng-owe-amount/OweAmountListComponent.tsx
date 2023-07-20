@@ -15,16 +15,16 @@ import {
 } from "@material-tailwind/react";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
-import { ReasonListData, userList } from "@/utils/fakeDatas";
+import { MngOweAmountListData, userList } from "@/utils/fakeDatas";
 import CustomizedTable from "@/components/includes/dataTable/DataTable";
 import ConfirmModal from "@/components/includes/ConfirmModal";
-import { ReasonColumns, UserColumns } from "@/utils/columns";
+import { OweAmountColumns, UserColumns } from "@/utils/columns";
 import ApiService from "@/services/ApiService";
 import { SkillComponent } from "@/components/includes/SkillComponents";
 import Image from "next/image";
 import personImg from "../../../public/image/persons/p-1.png";
 
-export const ReasonListComponent = () => {
+export const OweAmountListComponent = () => {
   const router = useRouter();
   const handleSelected = ({ row }: any) => {};
   const ProgressComponent = <Spinner />;
@@ -87,8 +87,8 @@ export const ReasonListComponent = () => {
         </Button>
       </div>
       <CustomizedTable
-        data={ReasonListData}
-        columns={ReasonColumns}
+        data={MngOweAmountListData}
+        columns={OweAmountColumns}
         handleSelected={handleSelected}
         expandableRows
         progressPending={Pending}

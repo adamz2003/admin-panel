@@ -100,10 +100,14 @@ export const UserTable = () => {
     getUserData();
   }, []);
 
+  const gotoAddUser = () => {
+    router.push('/dashboard/mng-user/add')
+  }
+
   return (
     <div className="grid gap-8">
       <div className="flex justify-end gap-2">
-        {/* <Button onClick={handlerEdit}>Edit</Button> */}
+        <Button onClick={gotoAddUser}>Add</Button>
         <Button color="red" onClick={handlerDelete}>
           Delete
         </Button>

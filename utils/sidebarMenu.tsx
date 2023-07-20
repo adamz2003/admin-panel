@@ -59,7 +59,7 @@ export const sidebarMenuList = [
       },
       {
         title: "Post Jobs",
-        url: "/dashboard/mng-jobs/add",
+        url: "/dashboard/mng-jobs/post",
       },
     ],
   },

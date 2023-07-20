@@ -1,4 +1,4 @@
-import { UserTable } from "@/components/dashboard/mng-users/UserTable";
+import { DisputeListComponent } from "@/components/dashboard/mng-dispute/DisputeListComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
@@ -6,7 +6,7 @@ import { ReactElement } from "react";
 const MngGigsDispute: NextPageWithLayout = () => {
   return (
     <div>
-      <UserTable />
+      <DisputeListComponent />
     </div>
   );
 };

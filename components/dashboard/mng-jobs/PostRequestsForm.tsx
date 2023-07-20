@@ -1,10 +1,17 @@
+import { InputSkillComponent } from "@/components/includes/InputSkillComponents";
+import notify from "@/utils/toast";
 import { Button, Card, CardBody, Input, Option, Select, Textarea, Typography } from "@material-tailwind/react";
 
 export const PostRequestsForm = () => {
+
+  const handlerSubmit = () => {
+    notify.success("Successful!")
+  }
+
   return (
     <div>
       <div className="flex justify-end">
-        <Button>Post a Request</Button>
+        <Button onClick={handlerSubmit}>Post a Request</Button>
       </div>
       <div className="grid gap-8">
         <Input variant="static" label="Job Title" />
@@ -39,6 +46,7 @@ export const PostRequestsForm = () => {
         <Select variant="static" label="Skills">
           <Option>Skills</Option>
         </Select>
+        <InputSkillComponent />
         <Card className="border-2 p-4 border-blue-500">
           <CardBody className="flex items-center justify-center">
             <Typography> Drag And Upload Your Files Here </Typography>

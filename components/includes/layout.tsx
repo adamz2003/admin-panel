@@ -47,12 +47,9 @@ export const LayoutComponent = ({ children }: any) => {
   const router = useRouter();
   const [ContentHeight, setContentHeight] = useState<any>();
   const { data: session, status } = useSession();
-
   const [openNav, setOpenNav] = useState(true);
 
   useEffect(() => {
-    // console.log(content.current.clientHeight)
-    console.log(content.current)
     window.addEventListener("resize", () => {
       window.innerWidth < 960 && setOpenNav(false);
       window.innerWidth >= 960 && setOpenNav(true);

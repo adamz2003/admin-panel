@@ -47,12 +47,16 @@ const profileMenuItems = [
   },
 ];
 
+const frontEndUrl = process.env.FRONTEND_URL || "http://localhost:3030";
+
 const ProfileMenu = () => {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
   const gotoPage = (url: string) => {
-    signOut();
+    // if(url === "/"){
+    //   signOut({ callbackUrl: frontEndUrl + "/" });
+    // }
     router.push(url);
   };
 
