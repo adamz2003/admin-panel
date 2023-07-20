@@ -9,7 +9,7 @@ const DetailUser: NextPageWithLayout = () => {
   const [UserInfo, setUserInfo] = useState<any>(userList[0]);
   return (
     <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-      <div className="col-span-2 space-y-12">
+      {/* <div className="col-span-2 space-y-12">
         <Card>
           <CardHeader
             variant="gradient"
@@ -77,7 +77,7 @@ const DetailUser: NextPageWithLayout = () => {
             </div>
           </CardBody>
         </Card>
-      </div>
+      </div> */}
     </div>
   );
 };

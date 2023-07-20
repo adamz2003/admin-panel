@@ -100,8 +100,8 @@ export const PostGigForm = () => {
             label="Category"
             onChange={(e: any) => getSubCategory(e)}
           >
-            {JogCategoryList.map((ele: any) => (
-              <Option value={ele.id}>{ele.name}</Option>
+            {JogCategoryList.map((ele: any, idx: number) => (
+              <Option value={ele.id} key={idx}>{ele.name}</Option>
             ))}
           </Select>
           <Select
@@ -110,8 +110,8 @@ export const PostGigForm = () => {
             onChange={(e: any) => setSelSubCate(e)}
           >
             {/* <Option>SubCategory</Option> */}
-            {JobSubCategoryList.map((ele: any) => (
-              <Option value={ele.id}>{ele.name}</Option>
+            {JobSubCategoryList.map((ele: any, idx: number) => (
+              <Option value={ele.id} key={idx}>{ele.name}</Option>
             ))}
           </Select>
         </div>
@@ -123,7 +123,7 @@ export const PostGigForm = () => {
             onChange={(e: any) => setSelPayMethod(e)}
           >
             {PriceType.map((ele: any, idx: number) => (
-              <Option value={ele.id}>{ele.name}</Option>
+              <Option value={ele.id} key={idx}>{ele.name}</Option>
             ))}
           </Select>
         </div>

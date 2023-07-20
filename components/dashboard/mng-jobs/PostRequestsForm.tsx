@@ -95,26 +95,26 @@ export const PostRequestsForm = () => {
         <Textarea variant="static" label="Description" resize={true} onChange={(e: any) => setSetDesc(e.target.value)} />
         <div className="grid lg:grid-cols-2 gap-8">
           <Select variant="static" label="Category" onChange={(e:any) => getSubCategory(e)}>
-            {JogCategoryList.map((ele: any) => (
-              <Option value={ele.id}>{ele.name}</Option>
+            {JogCategoryList.map((ele: any, idx: number) => (
+              <Option value={ele.id} key={idx}>{ele.name}</Option>
             ))}
           </Select>
           <Select variant="static" label="SubCategory" onChange={(e: any) => setSelSubCate(e)}>
             {/* <Option>SubCategory</Option> */}
-            {JobSubCategoryList.map((ele: any) => (
-              <Option value={ele.id}>{ele.name}</Option>
+            {JobSubCategoryList.map((ele: any, idx: number) => (
+              <Option value={ele.id} key={idx}>{ele.name}</Option>
             ))}
           </Select>
         </div>
         <div className="grid lg:grid-cols-3 gap-8">
           <Select variant="static" label="JobType" onChange={(e: any) => setSelJobType(e)}>
             {JobType.map((ele: any, idx: number) => (
-              <Option value={ele.id}>{ele.name}</Option>
+              <Option value={ele.id} key={idx}>{ele.name}</Option>
             ))}
           </Select>
           <Select variant="static" label="JobLevel" onChange={(e:any) => setSelJobLevel(e)}>
             {JobLevel.map((ele: any, idx: number) => (
-              <Option value={ele.id}>{ele.name}</Option>
+              <Option value={ele.id} key={idx}>{ele.name}</Option>
             ))}
           </Select>
           <Input variant="static" label="Time" />
@@ -123,7 +123,7 @@ export const PostRequestsForm = () => {
           <Input variant="static" label="Price" inputRef={priceRef} />
           <Select variant="static" label="Payment Method" onChange={(e:any) => setSelPayMethod(e)}>
             {PriceType.map((ele: any, idx: number) => (
-              <Option value={ele.id}>{ele.name}</Option>
+              <Option value={ele.id} key={idx}>{ele.name}</Option>
             ))}
           </Select>
         </div>
