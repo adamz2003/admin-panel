@@ -17,7 +17,7 @@ import {
     const [Pending, setPending] = useState(false);
   
     const ExpandedComponent = ({ data }: any) => (
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <div className="break-all">{JSON.stringify(data, null, 2)}</div>
     );
   
     const [selectedRows, setSelectedRows] = useState<any>([]);
@@ -62,8 +62,8 @@ import {
     }, []);
   
     return (
-      <div>
-        <div>
+      <div className="space-y-4">
+        <div className="flex flex-row justify-end space-x-2">
           <Button onClick={handlerEdit}>Edit</Button>
           <Button color="red" onClick={handlerDelete}>
             Delete

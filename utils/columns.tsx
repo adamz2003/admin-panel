@@ -1,3 +1,5 @@
+import { Chip } from "@material-tailwind/react";
+
 export const TestColumns = [
   {
     name: "Name",
@@ -18,9 +20,29 @@ export const TestColumns = [
     name: "isActive",
     selector: (row: any) => {
       if (row.isActive === "f") {
-        return "offline";
+        return (
+          <Chip
+            variant="ghost"
+            color="red"
+            size="sm"
+            value="Offline"
+            icon={
+              <span className="content-[''] block w-2 h-2 rounded-full mx-auto mt-1 bg-red-900" />
+            }
+          />
+        );
       } else {
-        return "online";
+        return (
+          <Chip
+            variant="ghost"
+            color="green"
+            size="sm"
+            value="Online"
+            icon={
+              <span className="content-[''] block w-2 h-2 rounded-full mx-auto mt-1 bg-green-900" />
+            }
+          />
+        );
       }
     },
     sortable: true,
@@ -113,11 +135,11 @@ export const JobsColumns = [
     name: "Status",
     selector: (row: any) => {
       if (row.status === "1") {
-        return "Active";
+        return <Chip color="blue" value="Active" />;
       } else if (row.status === "2") {
-        return "In Progressing";
+        return <Chip color="amber" value="In Progressing" />;
       } else if (row.status === "3") {
-        return "Hired";
+        return <Chip color="green" value="Completed" />;
       }
     },
     sortable: true,
@@ -149,12 +171,12 @@ export const GigColumns = [
   {
     name: "Status",
     selector: (row: any) => {
-      if (row.status === "0") {
-        return "Active";
-      } else if (row.status === "1") {
-        return "In Progressing";
+      if (row.status === "1") {
+        return <Chip color="blue" value="Active" />;
       } else if (row.status === "2") {
-        return "Hired";
+        return <Chip color="amber" value="In Progressing" />;
+      } else if (row.status === "3") {
+        return <Chip color="green" value="Completed" />;
       }
     },
     sortable: true,
@@ -203,7 +225,20 @@ export const FaqColumns = [
   },
   {
     name: "Category",
-    selector: (row: any) => row.category,
+    selector: (row: any) => {
+      return (
+        <Chip
+          color={
+            row.category === "freelancer"
+              ? "blue"
+              : row.category === "client"
+              ? "green"
+              : "gray"
+          }
+          value={row.category}
+        />
+      );
+    },
     sortable: true,
   },
   {
@@ -226,8 +261,21 @@ export const BlogColumns = [
   },
   {
     name: "Category",
-    selector: (row: any) => row.blogcategory.name,
-    sortable: true,
+    selector: (row: any) => {
+      return (
+        <Chip
+          variant="gradient"
+          color={
+            row.blogcategory.name === "freelancer"
+              ? "blue"
+              : row.blogcategory.name === "client"
+              ? "green"
+              : "red"
+          }
+          value={row.blogcategory.name}
+        />
+      );
+    },
   },
   {
     name: "Created At",
@@ -251,9 +299,9 @@ export const LocationColumns = [
     name: "Action",
     selector: (row: any) => {
       if (row.isActive === "f") {
-        return "Enable";
+        return <Chip color="green" value="Enable" />;
       }
-      return "Disable";
+      return <Chip color="red" value="Disable" />;
     },
     sortable: true,
   },
@@ -723,9 +771,9 @@ export const RatingColumns = [
 ];
 
 export const OrderListColumns = [
-  { name: "User Id", selector: (row: any) => row.user_id, sortable: true },
+  // { name: "User Id", selector: (row: any) => row.user_id, sortable: true },
   {
-    name: "Customer UD",
+    name: "Customer ID",
     selector: (row: any) => row.customer_id,
     sortable: true,
   },
@@ -784,7 +832,7 @@ export const OweAmountColumns = [
   {
     name: "ID",
     selector: (row: any) => row.id,
-    sortable: true
+    sortable: true,
   },
   {
     name: "User ID",
@@ -807,7 +855,7 @@ export const StoreOweAmountListColumns = [
   {
     name: "ID",
     selector: (row: any) => row.id,
-    sortable: true
+    sortable: true,
   },
   {
     name: "Store ID",
@@ -824,13 +872,13 @@ export const StoreOweAmountListColumns = [
     selector: (row: any) => row.description,
     sortable: true,
   },
-]
+];
 
 export const StorePayoutListColumns = [
   {
     name: "ID",
     selector: (row: any) => row.id,
-    sortable: true
+    sortable: true,
   },
   {
     name: "Store ID",
@@ -852,13 +900,13 @@ export const StorePayoutListColumns = [
     selector: (row: any) => row.status,
     sortable: true,
   },
-]
+];
 
 export const PenaltyListColumns = [
   {
     name: "ID",
     selector: (row: any) => row.id,
-    sortable: true
+    sortable: true,
   },
   {
     name: "Store ID",
@@ -880,22 +928,24 @@ export const PenaltyListColumns = [
     selector: (row: any) => row.date,
     sortable: true,
   },
-]
+];
 
 export const DisputeColumns = [
   {
     name: "ID",
     selector: (row: any) => row.id,
-    sortable: true
+    sortable: true,
   },
   {
     name: "Requester",
-    selector: (row: any) => row.requester.firstName + " " + row.requester.lastName,
+    selector: (row: any) =>
+      row.requester.firstName + " " + row.requester.lastName,
     sortable: true,
   },
   {
     name: "Wanted",
-    selector: (row: any) => row.job.wanted.firstName + " " + row.job.wanted.lastName,
+    selector: (row: any) =>
+      row.job.wanted.firstName + " " + row.job.wanted.lastName,
     sortable: true,
   },
   {
@@ -905,7 +955,15 @@ export const DisputeColumns = [
   },
   {
     name: "status",
-    selector: (row: any) => row.status,
+    selector: (row: any) => {
+      if (row.status) {
+        return <Chip value="Solved" color="green" className="text-white" />;
+      } else {
+        return (
+          <Chip value="In Progress" color="amber" className="text-white" />
+        );
+      }
+    },
     sortable: true,
   },
   {
@@ -913,4 +971,4 @@ export const DisputeColumns = [
     selector: (row: any) => row.createdAt,
     sortable: true,
   },
-]
+];

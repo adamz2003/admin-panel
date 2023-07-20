@@ -46,6 +46,7 @@ export const InputSkillComponent = () => {
     <div className="space-y-4 relative">
       <Input
         variant="static"
+        label="Skills"
         onKeyUp={(e: any) => onChangeHandler(e)}
       />
       {FilterSkillsList.length > 0 && (

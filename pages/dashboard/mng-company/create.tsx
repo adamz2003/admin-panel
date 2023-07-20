@@ -1,18 +1,18 @@
-import { CompanyListComponent } from "@/components/dashboard/mng-company/CompanyListComponent";
+import { CreateCompanyCompany } from "@/components/dashboard/mng-company/CreateCompanyComponent";
 import { LayoutComponent } from "@/components/includes/layout";
 import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
 
-const MngOrder: NextPageWithLayout = () => {
+const MngCompany: NextPageWithLayout = () => {
     return (
         <div>
-            <CompanyListComponent />
+            <CreateCompanyCompany />
         </div>
     )
 }
 
-MngOrder.getLayout = (page: ReactElement) => {
+MngCompany.getLayout = (page: ReactElement) => {
     return <LayoutComponent>{page}</LayoutComponent>
 }
 
-export default MngOrder
+export default MngCompany

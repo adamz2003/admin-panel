@@ -31,6 +31,14 @@ export const sidebarMenuList = [
         title: "TintMCE",
         url: "/test/tinymce",
       },
+      {
+        title: "Skill Input",
+        url: "/test/skill-input",
+      },
+      {
+        title: "Skill Create",
+        url: "/test/create-skill",
+      },
     ],
   },
   {
@@ -146,13 +154,13 @@ export const sidebarMenuList = [
     subMenu: [
       {
         title: "Location List",
-        url: "/dashboard/mng-locations"
+        url: "/dashboard/mng-locations",
       },
       {
         title: "Add",
-        url: "/dashboard/mng-locations/add"
-      }
-    ]
+        url: "/dashboard/mng-locations/add",
+      },
+    ],
   },
   {
     img: <FaCog className="h-5 w-5" />,
@@ -247,8 +255,8 @@ export const sidebarMenuList = [
       },
       {
         title: "Edit Properties",
-        url: "/dashboard/mng-home-banner/edit"
-      }
+        url: "/dashboard/mng-home-banner/edit",
+      },
     ],
   },
   {
@@ -258,7 +266,11 @@ export const sidebarMenuList = [
     subMenu: [
       {
         title: "Provider List",
-        url: "/dashboard/mng-provider"
+        url: "/dashboard/mng-provider",
+      },
+      {
+        title: "Add a Provider",
+        url: "/dashboard/mng-provider/create",
       },
       // {
       //   title: "Contract Management",
@@ -276,12 +288,22 @@ export const sidebarMenuList = [
       //   title: "Relationship",
       //   url: "/dashboard/mng-provider/mng-relation"
       // }
-    ]
+    ],
   },
   {
     img: <FaCog className="h-5 w-5" />,
     title: "Manage Company",
     url: "/dashboard/mng-company",
+    subMenu: [
+      {
+        title: "Company List",
+        url: "/dashboard/mng-company",
+      },
+      {
+        title: "New +",
+        url: "/dashboard/mng-company/create",
+      },
+    ],
   },
   {
     img: <FaCog className="h-5 w-5" />,
@@ -332,6 +354,16 @@ export const sidebarMenuList = [
     img: <FaCog className="h-5 w-5" />,
     title: "Manage Parcel Type",
     url: "/dashboard/mng-parcel-type",
+    subMenu: [
+      {
+        title: "Parcel Type List",
+        url: "/dashboard/mng-parcel-type",
+      },
+      {
+        title: "Add Parcel Type",
+        url: "/dashboard/mng-parcel-type/add",
+      },
+    ],
   },
   {
     img: <FaCog className="h-5 w-5" />,
@@ -342,16 +374,36 @@ export const sidebarMenuList = [
     img: <FaCog className="h-5 w-5" />,
     title: "Manage Fare",
     url: "/dashboard/mng-fare",
+    subMenu: [
+      {
+        title: "Fare List",
+        url: "/dashboard/mng-fare"
+      },
+      {
+        title: "Add Fare",
+        url: "/dashboard/mng-fare/add"
+      }
+    ]
   },
-  {
-    img: <FaCog className="h-5 w-5" />,
-    title: "Manage Ratings",
-    url: "/dashboard/mng-rating",
-  },
+  // {
+  //   img: <FaCog className="h-5 w-5" />,
+  //   title: "Manage Ratings",
+  //   url: "/dashboard/mng-rating",
+  // },
   {
     img: <FaCog className="h-5 w-5" />,
     title: "Manage Orders",
     url: "/dashboard/mng-order",
+    // subMenu: [
+    //   {
+    //     title: "Order List",
+    //     url: "/dashboard/mng-order"
+    //   },
+    //   {
+    //     title: "Add Order",
+    //     url: "/dashboard/mng-order/add"
+    //   }
+    // ]
   },
   {
     img: <FaCog className="h-5 w-5" />,

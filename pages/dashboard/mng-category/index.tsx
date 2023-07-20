@@ -9,20 +9,24 @@ import { NextPageWithLayout } from "@/pages/_app";
 import { ReactElement } from "react";
 
 const CategoryList: NextPageWithLayout = () => {
-    return (
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-            <CatSkillsCategoryComponent />
-            <CatBlogCategoryComponent />
-            <CatJobsCategoryComponent />
-            <CatSubJobsCategoryComponent />
-            <CatBlogTagComponent />
-            <CatRatingComponent />
-        </div>
-    )
-}
+  return (
+    <div className="grid gap-8">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        <CatSkillsCategoryComponent />
+        <CatBlogCategoryComponent />
+        <CatJobsCategoryComponent />
+        <CatBlogTagComponent />
+        <CatRatingComponent />
+      </div>
+      <div>
+        <CatSubJobsCategoryComponent />
+      </div>
+    </div>
+  );
+};
 
 CategoryList.getLayout = (page: ReactElement) => {
-    return <LayoutComponent>{page}</LayoutComponent>
-}
+  return <LayoutComponent>{page}</LayoutComponent>;
+};
 
-export default CategoryList
+export default CategoryList;

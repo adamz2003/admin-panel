@@ -42,8 +42,8 @@ export async function getGenerateInitProps(context: GetServerSidePropsContext) {
 }
 
 export const LayoutComponent = ({ children }: any) => {
-  const content = useRef<any>(null)
-  const sidebar = useRef<any>(null)
+  const content = useRef<any>(null);
+  const sidebar = useRef<any>(null);
   const router = useRouter();
   const [ContentHeight, setContentHeight] = useState<any>();
   const { data: session, status } = useSession();
@@ -67,45 +67,51 @@ export const LayoutComponent = ({ children }: any) => {
           <title>Admin Panel</title>
         </Head>
         <ToastContainer />
-        <NavbarComponent
-          openSidebar={setOpenNav}
-          openSidebarStatus={openNav}
-        />
+        <NavbarComponent openSidebar={setOpenNav} openSidebarStatus={openNav} />
         {router.asPath.startsWith("/dashboard/live-chat") ? (
           <div>{children}</div>
         ) : (
           <div>
             <div className="flex flex-row h-full">
               <LeftSidebar show={openNav} onShow={setOpenNav} ref={sidebar} />
-              <Card className="min-h-screen my-10 px-1 lg:mx-5 w-full h-fit flex flex-initial" ref={content}>
-                <CardHeader
-                  variant="gradient"
-                  color="blue"
-                  className="w-fit rounded-full"
+              <div className="max-h-[calc(100vh-4.4rem)] overflow-y-auto overflow-x-hidden w-full py-10">
+                <Card
+                  className="px-1 lg:mx-5 h-fit flex flex-initial overflow-auto"
+                  ref={content}
                 >
-                  <Breadcrumbs className="rounded-full p-1 bg-gradient-to-tr  border-white">
-                    <a
-                      href="#"
-                      className="text-white font-medium bg-blue px-3 py-1 rounded-full"
-                    >
-                      Docs
-                    </a>
-                    <a
-                      href="#"
-                      className="text-white font-medium bg-blue px-3 py-1 rounded-full"
-                    >
-                      Components
-                    </a>
-                    <a
-                      href="#"
-                      className="text-white font-medium bg-blue px-3 py-1 rounded-full"
-                    >
-                      Breadcrumbs
-                    </a>
-                  </Breadcrumbs>
-                </CardHeader>
-                <CardBody className="py-16">{children}</CardBody>
-              </Card>
+                  <CardBody className="py-16">
+                    <Card className="w-fit p-0 m-0 mb-10">
+                      <CardHeader
+                        variant="gradient"
+                        color="blue"
+                        className="w-fit rounded-full m-0 p-0"
+                      >
+                        <Breadcrumbs className="rounded-full p-1 bg-gradient-to-tr  border-white">
+                          <a
+                            href="#"
+                            className="text-white font-medium bg-blue px-3 py-1 rounded-full"
+                          >
+                            Docs
+                          </a>
+                          <a
+                            href="#"
+                            className="text-white font-medium bg-blue px-3 py-1 rounded-full"
+                          >
+                            Components
+                          </a>
+                          <a
+                            href="#"
+                            className="text-white font-medium bg-blue px-3 py-1 rounded-full"
+                          >
+                            Breadcrumbs
+                          </a>
+                        </Breadcrumbs>
+                      </CardHeader>
+                    </Card>
+                    {children}
+                  </CardBody>
+                </Card>
+              </div>
               {/* <div className="min-h-screen my-10 px-1 lg:mx-5 w-full">{children}</div> */}
             </div>
           </div>

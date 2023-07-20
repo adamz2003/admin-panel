@@ -1,4 +1,6 @@
+import notify from "@/utils/toast";
 import {
+  Button,
   Card,
   CardBody,
   CardHeader,
@@ -11,6 +13,9 @@ import {
 } from "@material-tailwind/react";
 
 export const AddVehicleComponent = () => {
+  const handleSubmit = () => {
+    notify.success("Successful!")
+  }
   return (
     <div className="space-y-12">
       <Card className="bg-blue-50">
@@ -97,6 +102,11 @@ export const AddVehicleComponent = () => {
             </div>
             {/* <Input variant="static" label="Rental Service" /> */}
           </div>
+        </CardBody>
+      </Card>
+      <Card className="bg-blue-50">
+        <CardBody className="grid gap-8">
+          <Button onClick={handleSubmit}>Save</Button>
         </CardBody>
       </Card>
     </div>
