@@ -3,8 +3,8 @@ import ProfileMenu from "./sub/profileMenu";
 import { InboxComponent } from "./sub/Inbox";
 import { Notification } from "./sub/Notification";
 import { useRouter } from "next/router";
-import Image from "next/image";
-import { LogoImg } from "@/utils/images";
+// import Image from "next/image";
+// import { LogoImg } from "@/utils/images";
 
 export const NavbarComponent = ({ openSidebar, openSidebarStatus }: any) => {
   const router = useRouter();
@@ -13,7 +13,8 @@ export const NavbarComponent = ({ openSidebar, openSidebarStatus }: any) => {
       <div className="mx-auto flex items-center justify-between text-blue-gray-900">
         <div className="flex flex-row">
           <div className="w-[6rem] mx-4">
-            <Image src={LogoImg} layout="responsive" alt="logo" />
+            LOGO
+            {/* <Image src={LogoImg} layout="responsive" alt="logo" /> */}
           </div>
           {router.pathname !== "/dashboard/live-chat" ? (
             <Switch
