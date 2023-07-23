@@ -33,16 +33,16 @@ export const PostRequestsForm = () => {
     setJogCategoryList(res.data);
   };
 
-  const getSubCategory = (e:any) => {
+  const getSubCategory = (e: any) => {
     const id = e;
-    setSelJobCate(e)
-    const res = JogCategoryList.filter((ele:any) => {
+    setSelJobCate(e);
+    const res = JogCategoryList.filter((ele: any) => {
       if (ele.id === id) {
-        return ele
+        return ele;
       }
-    })
-    setJobSubCategoryList(res[0].subCategories)
-  }
+    });
+    setJobSubCategoryList(res[0].subCategories);
+  };
 
   useEffect(() => {
     getJobCategory();
@@ -51,7 +51,7 @@ export const PostRequestsForm = () => {
   const handlerSubmit = () => {
     const title = titleRef.current.value;
     const desc = SetDesc;
-    console.log(desc)
+    console.log(desc);
     const price = priceRef.current.value;
     const files = [""];
 
@@ -68,20 +68,20 @@ export const PostRequestsForm = () => {
       // files: files,
       user: "admin",
       // skill: []
-    }
+    };
 
-    console.log(JobReq)
+    console.log(JobReq);
 
-    const flg = ValidateObj(JobReq)
+    const flg = ValidateObj(JobReq);
 
-    console.log(flg)
+    console.log(flg);
 
-    if(!flg){
-      notify.error("Please check the options!")
-      return
+    if (!flg) {
+      notify.error("Please check the options!");
+      return;
     }
     // TODO
-    
+
     notify.success("Successful!");
   };
 
@@ -92,38 +92,73 @@ export const PostRequestsForm = () => {
       </div>
       <div className="grid gap-8">
         <Input variant="static" label="Job Title" inputRef={titleRef} />
-        <Textarea variant="static" label="Description" resize={true} onChange={(e: any) => setSetDesc(e.target.value)} />
+        <Textarea
+          variant="static"
+          label="Description"
+          resize={true}
+          onChange={(e: any) => setSetDesc(e.target.value)}
+        />
         <div className="grid lg:grid-cols-2 gap-8">
-          <Select variant="static" label="Category" onChange={(e:any) => getSubCategory(e)}>
+          <Select
+            variant="static"
+            label="Category"
+            onChange={(e: any) => getSubCategory(e)}
+          >
             {JogCategoryList.map((ele: any, idx: number) => (
-              <Option value={ele.id} key={idx}>{ele.name}</Option>
+              <Option value={ele.id} key={idx}>
+                {ele.name}
+              </Option>
             ))}
           </Select>
-          <Select variant="static" label="SubCategory" onChange={(e: any) => setSelSubCate(e)}>
+          <Select
+            variant="static"
+            label="SubCategory"
+            onChange={(e: any) => setSelSubCate(e)}
+          >
             {/* <Option>SubCategory</Option> */}
             {JobSubCategoryList.map((ele: any, idx: number) => (
-              <Option value={ele.id} key={idx}>{ele.name}</Option>
+              <Option value={ele.id} key={idx}>
+                {ele.name}
+              </Option>
             ))}
           </Select>
         </div>
         <div className="grid lg:grid-cols-3 gap-8">
-          <Select variant="static" label="JobType" onChange={(e: any) => setSelJobType(e)}>
+          <Select
+            variant="static"
+            label="JobType"
+            onChange={(e: any) => setSelJobType(e)}
+          >
             {JobType.map((ele: any, idx: number) => (
-              <Option value={ele.id} key={idx}>{ele.name}</Option>
+              <Option value={ele.id} key={idx}>
+                {ele.name}
+              </Option>
             ))}
           </Select>
-          <Select variant="static" label="JobLevel" onChange={(e:any) => setSelJobLevel(e)}>
+          <Select
+            variant="static"
+            label="JobLevel"
+            onChange={(e: any) => setSelJobLevel(e)}
+          >
             {JobLevel.map((ele: any, idx: number) => (
-              <Option value={ele.id} key={idx}>{ele.name}</Option>
+              <Option value={ele.id} key={idx}>
+                {ele.name}
+              </Option>
             ))}
           </Select>
           <Input variant="static" label="Time" />
         </div>
         <div className="grid lg:grid-cols-2 gap-8">
           <Input variant="static" label="Price" inputRef={priceRef} />
-          <Select variant="static" label="Payment Method" onChange={(e:any) => setSelPayMethod(e)}>
+          <Select
+            variant="static"
+            label="Payment Method"
+            onChange={(e: any) => setSelPayMethod(e)}
+          >
             {PriceType.map((ele: any, idx: number) => (
-              <Option value={ele.id} key={idx}>{ele.name}</Option>
+              <Option value={ele.id} key={idx}>
+                {ele.name}
+              </Option>
             ))}
           </Select>
         </div>
